@@ -2,8 +2,6 @@
   if (window.__portfolioUiReady) return;
   window.__portfolioUiReady = true;
 
-  var state = { slideIndexByClass: {} };
-
   function hasClass(element, className) {
     if (!element || !element.className) return false;
     return (' ' + element.className + ' ').indexOf(' ' + className + ' ') > -1;
@@ -29,22 +27,19 @@
     return null;
   }
 
-  function getElementsByClass(className) {
-    return Array.prototype.slice.call(document.getElementsByClassName(className));
+  function toArray(collection) {
+    return Array.prototype.slice.call(collection || []);
   }
 
-  function getSlideClassFromNumber(no) {
-    return 'mySlides' + (Number(no) + 1);
+  function getElementsByClass(className) {
+    return toArray(document.getElementsByClassName(className));
   }
 
   function getSlidesInContainer(container) {
-    var result = [];
-    if (!container) return result;
-    var divs = container.getElementsByTagName('div');
-    for (var i = 0; i < divs.length; i += 1) {
-      if (/(^|\s)mySlides\d+(\s|$)/.test(divs[i].className)) result.push(divs[i]);
-    }
-    return result;
+    if (!container) return [];
+    return toArray(container.getElementsByTagName('div')).filter(function (element) {
+      return /(^|\s)mySlides\d+(\s|$)/.test(element.className || '');
+    });
   }
 
   function showSlideInContainer(container, index) {
@@ -56,7 +51,7 @@
     if (nextIndex > total) nextIndex = 1;
     if (nextIndex < 1) nextIndex = total;
 
-    container.setAttribute('data-slide-index', nextIndex);
+    container.setAttribute('data-slide-index', String(nextIndex));
     for (var i = 0; i < slides.length; i += 1) {
       slides[i].style.display = i === nextIndex - 1 ? 'block' : 'none';
     }
@@ -68,36 +63,22 @@
     showSlideInContainer(container, current + direction);
   }
 
-  function showSlidesByClass(className, index) {
-    var slides = getElementsByClass(className);
-    if (!slides.length) return;
-
-    var total = slides.length;
-    var nextIndex = index;
-    if (nextIndex > total) nextIndex = 1;
-    if (nextIndex < 1) nextIndex = total;
-
-    state.slideIndexByClass[className] = nextIndex;
-    for (var i = 0; i < slides.length; i += 1) {
-      slides[i].style.display = i === nextIndex - 1 ? 'block' : 'none';
-    }
-  }
-
-  window.plusSlides = function plusSlides(n, no) {
-    var eventObject = n && n.preventDefault ? n : window.event;
+  window.plusSlides = function plusSlides(direction, oldSlideNumber) {
+    var eventObject = window.event || null;
     var clicked = eventObject && (eventObject.target || eventObject.srcElement);
     var container = clicked ? closestByClass(clicked, 'slideshow-container') : null;
 
+    if (!container && typeof oldSlideNumber !== 'undefined') {
+      var slideClass = 'mySlides' + (Number(oldSlideNumber) + 1);
+      var oldSlides = getElementsByClass(slideClass);
+      if (oldSlides.length) container = closestByClass(oldSlides[0], 'slideshow-container');
+    }
+
     if (container) {
-      if (eventObject.preventDefault) eventObject.preventDefault();
-      if (eventObject.stopPropagation) eventObject.stopPropagation();
-      moveContainerSlider(container, no || n || 1);
+      moveContainerSlider(container, direction < 0 ? -1 : 1);
       return false;
     }
 
-    var className = getSlideClassFromNumber(no);
-    var current = state.slideIndexByClass[className] || 1;
-    showSlidesByClass(className, current + n);
     return false;
   };
 
@@ -109,7 +90,7 @@
       var slides = getSlidesInContainer(container);
       if (slides.length) showSlideInContainer(container, 1);
 
-      var buttons = container.getElementsByTagName('a');
+      var buttons = toArray(container.getElementsByTagName('a'));
       for (var b = 0; b < buttons.length; b += 1) {
         if (!hasClass(buttons[b], 'prev') && !hasClass(buttons[b], 'next')) continue;
 
@@ -143,15 +124,15 @@
     var graphicsItems = getElementsByClass('BlenderItem');
 
     var controls = {
-      bio: document.getElementById('bio'),
-      portfolio: document.getElementById('portfolio'),
-      frontend: document.getElementById('frontend'),
-      grafics3d: document.getElementById('grafics3d')
+      bio: document.getElementById('bioLink'),
+      portfolio: document.getElementById('portfolioLink'),
+      frontend: document.getElementById('frontendLink'),
+      grafics3d: document.getElementById('grafics3dLink')
     };
 
     function setActive(activeKey) {
       for (var key in controls) {
-        if (!controls.hasOwnProperty(key)) continue;
+        if (!Object.prototype.hasOwnProperty.call(controls, key)) continue;
         removeClass(controls[key], 'is-active');
         if (key === activeKey) addClass(controls[key], 'is-active');
       }
@@ -179,43 +160,26 @@
       setActive('bio');
     }
 
-    function bindControl(element, handler) {
+    function bindControl(element, handler, hash) {
       if (!element) return;
       element.onclick = function (event) {
         event = event || window.event;
         if (event.preventDefault) event.preventDefault();
         handler();
+        if (hash && window.history && window.history.replaceState) window.history.replaceState(null, '', hash);
         return false;
       };
     }
 
-    bindControl(controls.bio, function () {
-      showBio();
-      if (history && history.replaceState) history.replaceState(null, '', '#about');
-    });
-
-    bindControl(controls.portfolio, function () {
-      showPortfolio('all');
-      if (history && history.replaceState) history.replaceState(null, '', '#portfolio');
-    });
-
-    bindControl(controls.frontend, function () {
-      showPortfolio('frontend');
-      if (history && history.replaceState) history.replaceState(null, '', '#webgl');
-    });
-
-    bindControl(controls.grafics3d, function () {
-      showPortfolio('graphics');
-      if (history && history.replaceState) history.replaceState(null, '', '#graphics');
-    });
+    bindControl(controls.bio, showBio, '#about');
+    bindControl(controls.portfolio, function () { showPortfolio('all'); }, '#portfolio');
+    bindControl(controls.frontend, function () { showPortfolio('frontend'); }, '#webgl');
+    bindControl(controls.grafics3d, function () { showPortfolio('graphics'); }, '#graphics');
 
     var allLinks = document.getElementsByTagName('a');
     for (var i = 0; i < allLinks.length; i += 1) {
       if (!allLinks[i].getAttribute('data-show-portfolio')) continue;
-      bindControl(allLinks[i], function () {
-        showPortfolio('all');
-        if (history && history.replaceState) history.replaceState(null, '', '#portfolio');
-      });
+      bindControl(allLinks[i], function () { showPortfolio('all'); }, '#portfolio');
     }
 
     function applyHash() {
@@ -233,11 +197,8 @@
 
     applyHash();
 
-    if (window.addEventListener) {
-      window.addEventListener('hashchange', applyHash, false);
-    } else if (window.attachEvent) {
-      window.attachEvent('onhashchange', applyHash);
-    }
+    if (window.addEventListener) window.addEventListener('hashchange', applyHash, false);
+    else if (window.attachEvent) window.attachEvent('onhashchange', applyHash);
   }
 
   function initialize() {
