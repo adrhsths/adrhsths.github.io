@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="description" content="Portfolio and resume for Margarita Ramikh, Blender3D generalist, WebGL developer, and computer graphics specialist.">
 	<!-- <link href="main.css" rel="stylesheet" type="text/css"> -->
-	<link rel="stylesheet" type="text/css" href="./main.css">
+	<link rel="stylesheet" type="text/css" href="./main.css?v=20260605-index-only-3">
 	<!-- <link rel="stylesheet" media="only screen and (min-width: 850px)" href="main.css" /> -->
 </head>
 
@@ -14,6 +14,11 @@
 .loading { position: fixed; z-index: 999; width: 100%; height: 100%; top: 0; left: 0; background: #00000023; display: flex; justify-content: center; align-items: center; } #DefaultCustomizeTopBase { position: absolute; top: 0%; display: block; z-index: 999; color: white; margin-top: 1em; } .loader{ -webkit-perspective: 120px; -moz-perspective: 120px; -ms-perspective: 120px; perspective: 120px; width: 100px; height: 100px; } .loader:before{ content: ""; position: absolute; left: 25px; top: 25px; width: 50px; height: 50px; background-color: orange; animation: flip 1s infinite; } .flexbox_1{ display:flex; justify-content:center; } @keyframes flip { 0% { transform: rotate(0); } 50% { transform: rotateY(180deg); } 100% { transform: rotateY(180deg)  rotateX(180deg); } } #form1 { margin-top:-2em; margin-left:-22em; position: fixed; }
 </style>  -->
 <body>
+	<span id="about" class="route-anchor" aria-hidden="true"></span>
+	<span id="portfolio" class="route-anchor" aria-hidden="true"></span>
+	<span id="webgl" class="route-anchor" aria-hidden="true"></span>
+	<span id="graphics" class="route-anchor" aria-hidden="true"></span>
+
 	<!-- <div class="loading" id="js-loader">
 	<div>Loading...</div>
 	</div> - -->
@@ -45,22 +50,22 @@
 
 			<p style="color:#dddddd">⬇ CONTACT:</p>
 			<br>
-			<img loading="lazy" src="img/email1.png" class="icons">
+			<img src="img/email1.png" class="icons">
 			<a target="_blank" href="mailto:margaritaramikh@12141.net">Email</a>
 			<br>
 	
 			<br> 
-			<img loading="lazy" src="img/LinkedIn_logo1.png" class="icons">
+			<img src="img/LinkedIn_logo1.png" class="icons">
 			<a target="_blank" href="https://www.linkedin.com/in/rita-ramikh/">LinkedIn</a>
 			<br>
 		
 			<br> 
-			<img loading="lazy" src="img/Upwork_logo1.png" class="icons">
+			<img src="img/Upwork_logo1.png" class="icons">
 			<a target="_blank" href="https://www.upwork.com/freelancers/~018dd7ff37ff5c8c95">Upwork</a>
 			<br>
 
 			<!-- <br> 
-			<img loading="lazy" src="img/Upwork_logo.png" class="icons">
+			<img src="img/Upwork_logo.png" class="icons">
 			<a target="_blank" href="https://www.upwork.com/freelancers/~018dd7ff37ff5c8c95">Other</a>
 			<br>--><br>
 
@@ -87,14 +92,18 @@
 	
 	<!-- END NAV -->
 
-	<!-- !PAGE CONTENT! -->	
 	<div id="about" class="hash-anchor" aria-hidden="true"></div>
+	<div id="portfolio" class="hash-anchor" aria-hidden="true"></div>
+	<div id="webgl" class="hash-anchor" aria-hidden="true"></div>
+	<div id="graphics" class="hash-anchor" aria-hidden="true"></div>
+
+	<!-- !PAGE CONTENT! -->	
 	<div id="mainBioContent">
 		<div id="BioBlock">
 
 			<div id="BioText">
 
-				<img loading="lazy" id="photoBlock" src="img/margaritaphoto.png" alt="Margarita Ramikh portrait">
+				<img id="photoBlock" src="img/margaritaphoto.png" alt="Margarita Ramikh portrait">
 
 				<div class="bio-kicker">Computer graphics • Blender3D • WebGL • Front-End</div>
 				<h1>Margarita Ramikh</h1>
@@ -149,9 +158,6 @@
 
 
 
-	<div id="portfolio" class="hash-anchor" aria-hidden="true"></div>
-	<div id="webgl" class="hash-anchor" aria-hidden="true"></div>
-	<div id="graphics" class="hash-anchor" aria-hidden="true"></div>
 	<div id="mainPortfolioContent">
 
 		<section class="portfolio-intro" aria-label="Portfolio introduction">
@@ -176,10 +182,10 @@
 			<p>Arizona Barns Builder™ - core JS logic</p>
 			<div class="slideshow-container">
 				<div style="display: block;">
-					<img loading="lazy" src="img/arizonabuilder.png" style="width:100%">
+					<img src="img/arizonabuilder.png" style="width:100%">
 				</div>
-				<!-- <a class="prev" onclick="plusSlides(-1, 17)">❮</a>
-				<a class="next" onclick="plusSlides(1, 17)">❯</a> -->
+				<!-- <button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button> -->
 			</div>
 			<div class="desc">
 				<a href="https://gjkngfd.github.io/arizonaBarnsBuilderDemo" target="_blank"><i>Online Website</i></a> 
@@ -202,26 +208,26 @@
 			<p>Artiva T-shirt Designer</p>
 			<div class="slideshow-container">
 				<div class="mySlides20" style="display: block;">
-					<img loading="lazy" src="img/Slides20_image0.jpg" style="width:100%">
+					<img src="img/Slides20_image0.jpg" style="width:100%">
 				</div>
 				<div class="mySlides20" style="display: none;">
-					<img loading="lazy" src="img/Slides20_image1.jpg" style="width:100%">
+					<img src="img/Slides20_image1.jpg" style="width:100%">
 				</div>
 				<div class="mySlides20" style="display: none;">
-					<img loading="lazy" src="img/Slides20_image2.jpg" style="width:100%">
+					<img src="img/Slides20_image2.jpg" style="width:100%">
 				</div>
 				<div class="mySlides20" style="display: none;">
-					<img loading="lazy" src="img/Slides20_image3.jpg" style="width:100%">
+					<img src="img/Slides20_image3.jpg" style="width:100%">
 				</div>
 				<div class="mySlides20" style="display: none;">
-					<img loading="lazy" src="img/Slides20_image4.jpg" style="width:100%">
+					<img src="img/Slides20_image4.jpg" style="width:100%">
 				</div>
 				<div class="mySlides20" style="display: none;">
-					<img loading="lazy" src="img/Slides20_image5.jpg" style="width:100%">
+					<img src="img/Slides20_image5.jpg" style="width:100%">
 				</div>
 
-				<a class="prev" onclick="plusSlides(-1, 19)">❮</a>
-				<a class="next" onclick="plusSlides(1, 19)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 
 			<div class="desc">
@@ -245,32 +251,32 @@
 			<p>Tomodachi three.js website</p>
 			<div class="slideshow-container">
 				<div class="mySlides19" style="display: block;">
-					<img loading="lazy" src="img/Slides19_image0.png" style="width:100%">
+					<img src="img/Slides19_image0.png" style="width:100%">
 				</div>
 				<div class="mySlides19" style="display: none;">
-					<img loading="lazy" src="img/Slides19_image1.jpg" style="width:100%">
+					<img src="img/Slides19_image1.jpg" style="width:100%">
 				</div>
 				<div class="mySlides19" style="display: none;">
-					<img loading="lazy" src="img/Slides19_image5.jpg" style="width:100%">
+					<img src="img/Slides19_image5.jpg" style="width:100%">
 				</div>
 				<div class="mySlides19" style="display: none;">
-					<img loading="lazy" src="img/Slides19_image2.jpg" style="width:100%">
+					<img src="img/Slides19_image2.jpg" style="width:100%">
 				</div>
 				<div class="mySlides19" style="display: none;">
-					<img loading="lazy" src="img/Slides19_image3.jpg" style="width:100%">
+					<img src="img/Slides19_image3.jpg" style="width:100%">
 				</div>
 				<div class="mySlides19" style="display: none;">
-					<img loading="lazy" src="img/Slides19_image4.jpg" style="width:100%">
+					<img src="img/Slides19_image4.jpg" style="width:100%">
 				</div>
 				<div class="mySlides19" style="display: none;">
-					<img loading="lazy" src="img/Slides19_image6.jpg" style="width:100%">
+					<img src="img/Slides19_image6.jpg" style="width:100%">
 				</div>
 				<div class="mySlides19" style="display: none;">
-					<img loading="lazy" src="img/Slides19_image7.jpg" style="width:100%">
+					<img src="img/Slides19_image7.jpg" style="width:100%">
 				</div>
 
-				<a class="prev" onclick="plusSlides(-1, 18)">❮</a>
-				<a class="next" onclick="plusSlides(1, 18)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 
 			<!-- !!!!!!!!!!!!!!!!!!!!!!!! -->
@@ -287,20 +293,20 @@
 			<p>Varsity Base Jacket-Builder</p>
 			<div class="slideshow-container">
 				<div class="mySlides2" style="display: block;">
-					<img loading="lazy" src="img/Slides2_image0.png" style="width:100%">
+					<img src="img/Slides2_image0.png" style="width:100%">
 				</div>
 				<div class="mySlides2" style="display: none;">
-					<img loading="lazy" src="img/Slides2_image1.png" style="width:100%">
+					<img src="img/Slides2_image1.png" style="width:100%">
 				</div>
 				<div class="mySlides2" style="display: none;">
-					<img loading="lazy" src="img/Slides2_image2.png" style="width:100%">
+					<img src="img/Slides2_image2.png" style="width:100%">
 				</div>
 				<div class="mySlides2" style="display: none;">
-					<img loading="lazy" src="img/Slides2_image3.png" style="width:100%">
+					<img src="img/Slides2_image3.png" style="width:100%">
 				</div>
 
-				<a class="prev" onclick="plusSlides(-1, 1)">❮</a>
-				<a class="next" onclick="plusSlides(1, 1)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 
 
@@ -328,17 +334,17 @@
 			<p>Omega Speedmaster Automatic 3D Renders</p>
 			<div class="slideshow-container">
 				<div class="mySlides1" style="display: block;">
-					<img loading="lazy" src="img/Slides1_image0.png" style="width:100%">
+					<img src="img/Slides1_image0.png" style="width:100%">
 				</div>
 				<div class="mySlides1" style="display: none;">
-					<img loading="lazy" src="img/Slides1_image1.png" style="width:100%">
+					<img src="img/Slides1_image1.png" style="width:100%">
 				</div>
 				<div class="mySlides1" style="display: none;">
-					<img loading="lazy" src="img/Slides1_image2.png" style="width:100%">
+					<img src="img/Slides1_image2.png" style="width:100%">
 				</div>
 			
-				<a class="prev" onclick="plusSlides(-1, 0)">❮</a>
-				<a class="next" onclick="plusSlides(1, 0)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 			<div class="desc">
 				<br>
@@ -352,10 +358,10 @@
 			<p>VR Room Demo (WebGL)</p>
 			<div class="slideshow-container">
 				<div style="display: block;">
-					<img loading="lazy" src="img/vrroomdemo.jpg" style="width:100%">
+					<img src="img/vrroomdemo.jpg" style="width:100%">
 				</div>
-				<!-- <a class="prev" onclick="plusSlides(-1, 17)">❮</a>
-				<a class="next" onclick="plusSlides(1, 17)">❯</a> -->
+				<!-- <button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button> -->
 			</div>
 			<div class="desc">
 				<a href="https://dfjgwrp.github.io/roomVR/" target="_blank"><i>VR Room online</i></a> 
@@ -372,7 +378,7 @@
 			<p>AquaScan WebGL</p>
 			<div class="slideshow-container">
 				<div class="mySlides9" style="display: block;">
-					<img loading="lazy" src="img/aquascan.png" style="width:100%">
+					<img src="img/aquascan.png" style="width:100%">
 				</div>
 			</div>
 			<div class="desc">
@@ -389,17 +395,17 @@
 			<p>Informative live data generator</p>
 			<div class="slideshow-container">
 				<div class="mySlides3" style="display: block;">
-					<img loading="lazy" src="img/Slides3_image0.png" style="width:100%">
+					<img src="img/Slides3_image0.png" style="width:100%">
 				</div>
 				<div class="mySlides3" style="display: none;">
-					<img loading="lazy" src="img/Slides3_image1.png" style="width:100%">
+					<img src="img/Slides3_image1.png" style="width:100%">
 				</div>
 				<div class="mySlides3" style="display: none;">
-					<img loading="lazy" src="img/Slides3_image2.png" style="width:100%">
+					<img src="img/Slides3_image2.png" style="width:100%">
 				</div>
 
-				<a class="prev" onclick="plusSlides(-1, 2)">❮</a>
-				<a class="next" onclick="plusSlides(1, 2)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 
 			<div class="desc">
@@ -422,10 +428,10 @@
 			<p>Medical Tech Animations (React-three.js)</p>
 			<div class="slideshow-container">
 				<div style="display: block;">
-					<img loading="lazy" src="img/medicalthreejs.png" style="width:100%">
+					<img src="img/medicalthreejs.png" style="width:100%">
 				</div>
-				<!-- <a class="prev" onclick="plusSlides(-1, 17)">❮</a>
-				<a class="next" onclick="plusSlides(1, 17)">❯</a> -->
+				<!-- <button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button> -->
 			</div>
 			<div class="desc">
 				<a href="https://gjkngfd.github.io/r3f_medical_machines/" target="_blank"><i>react-three-fiber webpage</i></a> 
@@ -448,28 +454,28 @@
 			<div class="slideshow-container">
 
 				<div class="mySlides22" style="display: block;">
-					<img loading="lazy" src="img/slides22_1.png" style="width:100%">
+					<img src="img/slides22_1.png" style="width:100%">
 				</div>
 
 				<div class="mySlides22" style="display: none;">
-					<img loading="lazy" src="img/slides22_0.png" style="width:100%">
+					<img src="img/slides22_0.png" style="width:100%">
 				</div>
 				<div class="mySlides22" style="display: none;">
-					<img loading="lazy" src="img/slides22_2.jpg" style="width:100%">
+					<img src="img/slides22_2.jpg" style="width:100%">
 				</div>
 				<div class="mySlides22" style="display: none;">
-					<img loading="lazy" src="img/slides22_3.jpg" style="width:100%">
+					<img src="img/slides22_3.jpg" style="width:100%">
 				</div>
 				<div class="mySlides22" style="display: none;">
-					<img loading="lazy" src="img/slides22_4.jpg" style="width:100%">
+					<img src="img/slides22_4.jpg" style="width:100%">
 				</div>
 				<!-- 
 				<div class="mySlides22" style="display: none;">
-					<img loading="lazy" src="img/slides22_3.png" style="width:100%">
+					<img src="img/slides22_3.png" style="width:100%">
 				</div> --> 
 
-				<a class="prev" onclick="plusSlides(-1, 21)">❮</a>
-				<a class="next" onclick="plusSlides(1, 21)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 			<div class="desc">
 				<br><br>
@@ -491,20 +497,20 @@
 			<p>Hemero Sportswear</p>
 			<div class="slideshow-container">
 				<div class="mySlides5" style="display: block;">
-					<img loading="lazy" src="img/Slides5_image0.png" style="width:100%">
+					<img src="img/Slides5_image0.png" style="width:100%">
 				</div>
 				<div class="mySlides5" style="display: none;">
-					<img loading="lazy" src="img/Slides5_image1.jpg" style="width:100%">
+					<img src="img/Slides5_image1.jpg" style="width:100%">
 				</div>
 				<div class="mySlides5" style="display: none;">
-					<img loading="lazy" src="img/Slides5_image2.jpg" style="width:100%">
+					<img src="img/Slides5_image2.jpg" style="width:100%">
 				</div>
 				<div class="mySlides5" style="display: none;">
-					<img loading="lazy" src="img/Slides5_image3.jpg" style="width:100%">
+					<img src="img/Slides5_image3.jpg" style="width:100%">
 				</div>
 			
-				<a class="prev" onclick="plusSlides(-1, 4)">❮</a>
-				<a class="next" onclick="plusSlides(1, 4)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 			<div class="desc">
 				<a href="https://hemero.us/teamwear/teamwear.html" target="_blank">Hemero.us - Sportswear Designer</a>
@@ -520,19 +526,19 @@
 			<p>3D modelling/Rendering: Mini Cooper Countryman</p>
 			<div class="slideshow-container">
 				<div class="mySlides15" style="display: block;">
-					<img loading="lazy" src="img/Slides15_image0.jpg" style="width:100%">
+					<img src="img/Slides15_image0.jpg" style="width:100%">
 				</div>
 				<div class="mySlides15" style="display: none;">
-					<img loading="lazy" src="img/Slides15_image1.jpg" style="width:100%">
+					<img src="img/Slides15_image1.jpg" style="width:100%">
 				</div>
 				<div class="mySlides15" style="display: none;">
-					<img loading="lazy" src="img/Slides15_image2.jpg" style="width:100%">
+					<img src="img/Slides15_image2.jpg" style="width:100%">
 				</div>
 				<div class="mySlides15" style="display: none;">
-					<img loading="lazy" src="img/Slides15_image3.jpg" style="width:100%">
+					<img src="img/Slides15_image3.jpg" style="width:100%">
 				</div>
-				<a class="prev" onclick="plusSlides(-1, 14)">❮</a>
-				<a class="next" onclick="plusSlides(1, 14)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 			<div class="desc">
 				<br>
@@ -548,23 +554,23 @@
 			<p>Creation low-poly cartoon world, Blender3D</p>
 			<div class="slideshow-container">
 				<div class="mySlides6" style="display: block;">
-					<img loading="lazy" src="img/Slides6_image0.jpg" style="width:100%">
+					<img src="img/Slides6_image0.jpg" style="width:100%">
 				</div>
 				<div class="mySlides6" style="display: none;">
-					<img loading="lazy" src="img/Slides6_image1.jpg" style="width:100%">
+					<img src="img/Slides6_image1.jpg" style="width:100%">
 				</div>
 				<div class="mySlides6" style="display: none;">
-					<img loading="lazy" src="img/Slides6_image2.jpg" style="width:100%">
+					<img src="img/Slides6_image2.jpg" style="width:100%">
 				</div>
 				<div class="mySlides6" style="display: none;">
-					<img loading="lazy" src="img/Slides6_image3.jpg" style="width:100%">
+					<img src="img/Slides6_image3.jpg" style="width:100%">
 				</div>
 				<div class="mySlides6" style="display: none;">
-					<img loading="lazy" src="img/Slides6_image4.jpg" style="width:100%">
+					<img src="img/Slides6_image4.jpg" style="width:100%">
 				</div>
 			
-				<a class="prev" onclick="plusSlides(-1, 5)">❮</a>
-				<a class="next" onclick="plusSlides(1, 5)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 			<div class="desc">
 				My job was to create 3D models of characters and environment according to client's sketches.
@@ -583,7 +589,7 @@
 			<div class="slideshow-container">
 			
 				<div  style="display: block;">
-					<img loading="lazy" src="img/Slides9_image1.png" style="width:100%">
+					<img src="img/Slides9_image1.png" style="width:100%">
 				</div>
 
 			</div>
@@ -620,20 +626,20 @@
 			<p>three.js based application for Volkswagen's Jetta</p>
 			<div class="slideshow-container">
 				<div class="mySlides7" style="display: block;">
-					<img loading="lazy" src="img/Slides7_image0.png" style="width:100%">
+					<img src="img/Slides7_image0.png" style="width:100%">
 				</div>
 				<div class="mySlides7" style="display: none;">
-					<img loading="lazy" src="img/Slides7_image1.png" style="width:100%">
+					<img src="img/Slides7_image1.png" style="width:100%">
 				</div>
 				<div class="mySlides7" style="display: none;">
-					<img loading="lazy" src="img/Slides7_image2.png" style="width:100%">
+					<img src="img/Slides7_image2.png" style="width:100%">
 				</div>
 				<div class="mySlides7" style="display: none;">
-					<img loading="lazy" src="img/Slides7_image3.png" style="width:100%">
+					<img src="img/Slides7_image3.png" style="width:100%">
 				</div>
 			
-				<a class="prev" onclick="plusSlides(-1, 6)">❮</a>
-				<a class="next" onclick="plusSlides(1, 6)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 			<div class="desc">
 				<a href="https://dfjgwrp.github.io/jetta3d_promo/" target="_blank"><i>Volkswagen Jetta online 3D </i></a>  <br><br>
@@ -647,20 +653,20 @@
 			<p>3D model &amp; renders for Brewista</p>
 			<div class="slideshow-container">
 				<div class="mySlides10" style="display: block;">
-					<img loading="lazy" src="img/Slides10_image0.jpg" style="width:100%">
+					<img src="img/Slides10_image0.jpg" style="width:100%">
 				</div>
 				<div class="mySlides10" style="display: none;">
-					<img loading="lazy" src="img/Slides10_image1.jpg" style="width:100%">
+					<img src="img/Slides10_image1.jpg" style="width:100%">
 				</div>
 				<div class="mySlides10" style="display: none;">
-					<img loading="lazy" src="img/Slides10_image2.jpg" style="width:100%">
+					<img src="img/Slides10_image2.jpg" style="width:100%">
 				</div>
 				<div class="mySlides10" style="display: none;">
-					<img loading="lazy" src="img/Slides10_image3.jpg" style="width:100%">
+					<img src="img/Slides10_image3.jpg" style="width:100%">
 				</div>
 
-				<a class="prev" onclick="plusSlides(-1, 9)">❮</a>
-				<a class="next" onclick="plusSlides(1, 9)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 			<div class="desc">
 				<br>
@@ -678,34 +684,34 @@
 			<div class="slideshow-container">
 
 				<div class="mySlides8" style="display: block;">
-					<img loading="lazy" src="img/Slides8_image0.jpg" style="width:100%">
+					<img src="img/Slides8_image0.jpg" style="width:100%">
 				</div>
 				<div class="mySlides8" style="display: none;">
-					<img loading="lazy" src="img/Slides8_image1.jpg" style="width:100%">
+					<img src="img/Slides8_image1.jpg" style="width:100%">
 				</div>
 				<div class="mySlides8" style="display: none;">
-					<img loading="lazy" src="img/Slides8_image2.jpg" style="width:100%">
+					<img src="img/Slides8_image2.jpg" style="width:100%">
 				</div>
 
 				<div class="mySlides8" style="display: block;">
-					<iframe loading="lazy" width="100%" height="auto" src="https://www.youtube.com/embed/COEDlLwb9Ys" title="YouTube video player" frameborder="0" style="margin-top: 1em;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe width="100%" height="auto" src="https://www.youtube.com/embed/COEDlLwb9Ys" title="YouTube video player" frameborder="0" style="margin-top: 1em;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 
 				<div class="mySlides8" style="display: none;">
-					<img loading="lazy" src="img/Slides8_image3.jpg" style="width:100%">
+					<img src="img/Slides8_image3.jpg" style="width:100%">
 				</div>
 				<div class="mySlides8" style="display: none;">
-					<img loading="lazy" src="img/Slides8_image4.jpg" style="width:100%">
+					<img src="img/Slides8_image4.jpg" style="width:100%">
 				</div>
 				<div class="mySlides8" style="display: none;">
-					<img loading="lazy" src="img/Slides8_image5.jpg" style="width:100%">
+					<img src="img/Slides8_image5.jpg" style="width:100%">
 				</div>
 				<div class="mySlides8" style="display: none;">
-					<img loading="lazy" src="img/Slides8_image6.jpg" style="width:100%">
+					<img src="img/Slides8_image6.jpg" style="width:100%">
 				</div>
 			
-				<a class="prev" onclick="plusSlides(-1, 7)">❮</a>
-				<a class="next" onclick="plusSlides(1, 7)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 			<div class="desc">
 				<br>
@@ -724,23 +730,23 @@
 			<p>Bulldog</p>
 			<div class="slideshow-container">
 				<div class="mySlides4" style="display: block;">
-					<img loading="lazy" src="img/Slides4_image0.png" style="width:100%">
+					<img src="img/Slides4_image0.png" style="width:100%">
 				</div>
 				<div class="mySlides4" style="display: none;">
-					<img loading="lazy" src="img/Slides4_image1.png" style="width:100%">
+					<img src="img/Slides4_image1.png" style="width:100%">
 				</div>
 				<div class="mySlides4" style="display: none;">
-					<img loading="lazy" src="img/Slides4_image2.png" style="width:100%">
+					<img src="img/Slides4_image2.png" style="width:100%">
 				</div>
 				<div class="mySlides4" style="display: none;">
-					<img loading="lazy" src="img/Slides4_image3.png" style="width:100%">
+					<img src="img/Slides4_image3.png" style="width:100%">
 				</div>
 				<div class="mySlides4" style="display: none;">
-					<iframe loading="lazy" width="100%" height="auto" src="https://www.youtube.com/embed/lZNOUEogxQQ" title="YouTube video player" frameborder="0" style="margin-top: 1em;"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe width="100%" height="auto" src="https://www.youtube.com/embed/lZNOUEogxQQ" title="YouTube video player" frameborder="0" style="margin-top: 1em;"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 
-				<a class="prev" onclick="plusSlides(-1, 3)">❮</a>
-				<a class="next" onclick="plusSlides(1, 3)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 
 			<div class="desc">
@@ -760,23 +766,23 @@
 			<p>3D viewer Mobile devices, three.js</p>
 			<div class="slideshow-container">
 				<div class="mySlides11" style="display: block;">
-					<img loading="lazy" src="img/Slides11_image3.jpg" style="width:100%">
+					<img src="img/Slides11_image3.jpg" style="width:100%">
 				</div>
 				<div class="mySlides11" style="display: none;">
-					<img loading="lazy" src="img/Slides11_image1.jpg" style="width:100%">
+					<img src="img/Slides11_image1.jpg" style="width:100%">
 				</div>
 				<div class="mySlides11" style="display: none;">
-					<img loading="lazy" src="img/Slides11_image2.jpg" style="width:100%">
+					<img src="img/Slides11_image2.jpg" style="width:100%">
 				</div>
 				<div class="mySlides11" style="display: none;">
-					<img loading="lazy" src="img/Slides11_image0.jpg" style="width:100%">
+					<img src="img/Slides11_image0.jpg" style="width:100%">
 				</div>
 				<div class="mySlides11" style="display: none;">
-					<img loading="lazy" src="img/Slides11_image4.jpg" style="width:100%">
+					<img src="img/Slides11_image4.jpg" style="width:100%">
 				</div>
 
-				<a class="prev" onclick="plusSlides(-1, 10)">❮</a>
-				<a class="next" onclick="plusSlides(1, 10)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 			<div class="desc">
 				<a href="https://dfjgwrp.github.io/smartgadges_promo/" target="_blank"><i>three.js webpage</i></a> 
@@ -795,14 +801,14 @@
 			<p>Landing page, interactivity</p>
 			<div class="slideshow-container">
 				<div class="mySlides12" style="display: block;">
-					<img loading="lazy" src="img/Slides12_image0.jpg" style="width:100%">
+					<img src="img/Slides12_image0.jpg" style="width:100%">
 				</div>
 				<div class="mySlides12" style="display: none;">
-					<img loading="lazy" src="img/Slides12_image1.jpg" style="width:100%">
+					<img src="img/Slides12_image1.jpg" style="width:100%">
 				</div>
 
-				<a class="prev" onclick="plusSlides(-1, 11)">❮</a>
-				<a class="next" onclick="plusSlides(1, 11)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 			<div class="desc">
 				<a href="https://dfjgwrp.github.io/AdeocodeStartPage/" target="_blank"><i>Adeocode landing webpage</i></a> 
@@ -817,23 +823,23 @@
 			<p>3D models and renders for furniture online-store</p>
 			<div class="slideshow-container">
 				<div class="mySlides13" style="display: block;">
-					<img loading="lazy" src="img/Slides13_image0.jpg" style="width:100%">
+					<img src="img/Slides13_image0.jpg" style="width:100%">
 				</div>
 				<div class="mySlides13" style="display: none;">
-					<img loading="lazy" src="img/Slides13_image1.jpg" style="width:100%">
+					<img src="img/Slides13_image1.jpg" style="width:100%">
 				</div>
 				<div class="mySlides13" style="display: none;">
-					<img loading="lazy" src="img/Slides13_image2.jpg" style="width:100%">
+					<img src="img/Slides13_image2.jpg" style="width:100%">
 				</div>
 				<div class="mySlides13" style="display: none;">
-					<img loading="lazy" src="img/Slides13_image3.jpg" style="width:100%">
+					<img src="img/Slides13_image3.jpg" style="width:100%">
 				</div>
 				<div class="mySlides13" style="display: none;">
-					<img loading="lazy" src="img/Slides13_image4.jpg" style="width:100%">
+					<img src="img/Slides13_image4.jpg" style="width:100%">
 				</div>
 
-				<a class="prev" onclick="plusSlides(-1, 12)">❮</a>
-				<a class="next" onclick="plusSlides(1, 12)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 			<div class="desc">
 				<br><br>
@@ -850,19 +856,19 @@
 			<p>Interactive three.js website</p>
 			<div class="slideshow-container">
 				<div class="mySlides14" style="display: block;">
-					<img loading="lazy" src="img/Slides14_image0.jpg" style="width:100%">
+					<img src="img/Slides14_image0.jpg" style="width:100%">
 				</div>
 				<div class="mySlides14" style="display: none;">
-					<img loading="lazy" src="img/Slides14_image1.jpg" style="width:100%">
+					<img src="img/Slides14_image1.jpg" style="width:100%">
 				</div>
 				<div class="mySlides14" style="display: none;">
-					<img loading="lazy" src="img/Slides14_image2.jpg" style="width:100%">
+					<img src="img/Slides14_image2.jpg" style="width:100%">
 				</div>
 				<div class="mySlides14" style="display: none;">
-					<img loading="lazy" src="img/Slides14_image3.jpg" style="width:100%">
+					<img src="img/Slides14_image3.jpg" style="width:100%">
 				</div>
-				<a class="prev" onclick="plusSlides(-1, 13)">❮</a>
-				<a class="next" onclick="plusSlides(1, 13)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 			<div class="desc">
 				<a href="https://dfjgwrp.github.io/ElifPackagingPromo/" target="_blank"><i>ElifPackaging Promo</i></a> 
@@ -878,22 +884,22 @@
 			<p>3D productions for African Dream</p>
 			<div class="slideshow-container">
 				<div class="mySlides16" style="display: block;">
-					<img loading="lazy" src="img/Slides16_image0.jpg" style="width:100%">
+					<img src="img/Slides16_image0.jpg" style="width:100%">
 				</div>
 				<div class="mySlides16" style="display: none;">
-					<img loading="lazy" src="img/Slides16_image1.jpg" style="width:100%">
+					<img src="img/Slides16_image1.jpg" style="width:100%">
 				</div>
 				<div class="mySlides16" style="display: none;">
-					<img loading="lazy" src="img/Slides16_image2.jpg" style="width:100%">
+					<img src="img/Slides16_image2.jpg" style="width:100%">
 				</div>
 				<div class="mySlides16" style="display: none;">
-					<img loading="lazy" src="img/Slides16_image3.jpg" style="width:100%">
+					<img src="img/Slides16_image3.jpg" style="width:100%">
 				</div>
 				<div class="mySlides16" style="margin-left: 20%; width: 60%; display: none;">
-					<iframe loading="lazy" width="100%" height="auto" src="https://www.youtube.com/embed/KbkySv25NSg" title="YouTube video player" frameborder="0" style="margin-top: 1em;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe width="100%" height="auto" src="https://www.youtube.com/embed/KbkySv25NSg" title="YouTube video player" frameborder="0" style="margin-top: 1em;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
-				<a class="prev" onclick="plusSlides(-1, 15)">❮</a>
-				<a class="next" onclick="plusSlides(1, 15)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 			<div class="desc">
 				<br>
@@ -909,10 +915,10 @@
 			<p>Jewelry WebGL Engraving</p>
 			<div class="slideshow-container">
 				<div style="display: block;">
-					<img loading="lazy" src="img/ringsengraving.png" style="width:100%">
+					<img src="img/ringsengraving.png" style="width:100%">
 				</div>
-				<!-- <a class="prev" onclick="plusSlides(-1, 17)">❮</a>
-				<a class="next" onclick="plusSlides(1, 17)">❯</a> -->
+				<!-- <button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button> -->
 			</div>
 			<div class="desc">
 				<a href="https://gjkngfd.github.io/3DRingsEngravingDemo" target="_blank"><i>Online Version</i></a> 
@@ -938,36 +944,36 @@
 			<div class="slideshow-container">
 
 				<div class="mySlides17" style="display: block;">
-					<img loading="lazy" src="img/Slides17_image0.jpg" style="width:100%">
+					<img src="img/Slides17_image0.jpg" style="width:100%">
 				</div>
 
 				<div class="mySlides17" style="display: none;">
-					<img loading="lazy" src="img/Slides17_image1.jpg" style="width:100%">
+					<img src="img/Slides17_image1.jpg" style="width:100%">
 				</div>
 				<div class="mySlides17" style="display: none;">
-					<img loading="lazy" src="img/Slides17_image2.jpg" style="width:100%">
+					<img src="img/Slides17_image2.jpg" style="width:100%">
 				</div>
 				<div class="mySlides17" style="display: none;">
-					<img loading="lazy" src="img/Slides17_image2_2.jpg" style="width:100%">
+					<img src="img/Slides17_image2_2.jpg" style="width:100%">
 				</div>
 				<div class="mySlides17" style="display: block;">
-					<iframe loading="lazy" width="100%" height="auto" src="https://www.youtube.com/embed/i5TMZFMXuA8" title="YouTube video player" frameborder="0" style="margin-top: 1em;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe width="100%" height="auto" src="https://www.youtube.com/embed/i5TMZFMXuA8" title="YouTube video player" frameborder="0" style="margin-top: 1em;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 				<div class="mySlides17" style="display: none;">
-					<img loading="lazy" src="img/Slides17_image3.jpg" style="width:100%">
+					<img src="img/Slides17_image3.jpg" style="width:100%">
 				</div>
 				<div class="mySlides17" style="display: none;">
-					<img loading="lazy" src="img/Slides17_image4.jpg" style="width:100%">
+					<img src="img/Slides17_image4.jpg" style="width:100%">
 				</div>
 				<div class="mySlides17" style="display: none;">
-					<img loading="lazy" src="img/Slides17_image5.jpg" style="width:100%">
+					<img src="img/Slides17_image5.jpg" style="width:100%">
 				</div>
 				<div class="mySlides17" style="display: none;">
-					<img loading="lazy" src="img/Slides17_image6.jpg" style="width:100%">
+					<img src="img/Slides17_image6.jpg" style="width:100%">
 				</div>
 
-				<a class="prev" onclick="plusSlides(-1, 16)">❮</a>
-				<a class="next" onclick="plusSlides(1, 16)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 			<div class="desc">
 				<br><br>
@@ -984,20 +990,20 @@
 			<p>An interactive WebGL-viewer with post-processing & animations </p>
 			<div class="slideshow-container">
 				<div class="mySlides18" style="display: block;">
-					<img loading="lazy" src="img/Slides18_image1.jpg" style="width:100%">
+					<img src="img/Slides18_image1.jpg" style="width:100%">
 				</div>
 				<div class="mySlides18" style="display: none;">
-					<img loading="lazy" src="img/Slides18_image2.jpg" style="width:100%">
+					<img src="img/Slides18_image2.jpg" style="width:100%">
 				</div>
 				<div class="mySlides18" style="display: none;">
-					<img loading="lazy" src="img/Slides18_image2.jpg" style="width:100%">
+					<img src="img/Slides18_image2.jpg" style="width:100%">
 				</div>
 				<div class="mySlides18" style="display: none;">
-					<img loading="lazy" src="img/Slides18_image3.jpg" style="width:100%">
+					<img src="img/Slides18_image3.jpg" style="width:100%">
 				</div>
 
-				<a class="prev" onclick="plusSlides(-1, 17)">❮</a>
-				<a class="next" onclick="plusSlides(1, 17)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 			<div class="desc">
 				<a href="https://gjkngfd.github.io/PollogenByLumenis" target="_blank"><i>Pallogen by Lumenis™️</i></a> 
@@ -1015,10 +1021,10 @@
 			<p>Webpage cursor reactions: exploding 3D logo</p>
 			<div class="slideshow-container">
 				<div style="display: block;">
-					<img loading="lazy" src="img/exploding3Dlogopreview.jpg" style="width:100%">
+					<img src="img/exploding3Dlogopreview.jpg" style="width:100%">
 				</div>
-				<!-- <a class="prev" onclick="plusSlides(-1, 17)">❮</a>
-				<a class="next" onclick="plusSlides(1, 17)">❯</a> -->
+				<!-- <button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button> -->
 			</div>
 			<div class="desc">
 				<a href="https://dfjgwrp.github.io/exploding3Dlogo/" target="_blank"><i>Online Version</i></a> 
@@ -1037,10 +1043,10 @@
 			<p>Ferris.co</p>
 			<div class="slideshow-container">
 				<div style="display: block;">
-					<img loading="lazy" src="img/ferris.png" style="width:100%">
+					<img src="img/ferris.png" style="width:100%">
 				</div>
-				<!-- <a class="prev" onclick="plusSlides(-1, 17)">❮</a>
-				<a class="next" onclick="plusSlides(1, 17)">❯</a> -->
+				<!-- <button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button> -->
 			</div>
 			<div class="desc">
 				<a href="https://gjkngfd.github.io/ferris/" target="_blank"><i>Ferris.co quick & cheap WebGL 3D Demo</i></a> 
@@ -1056,10 +1062,10 @@
 			<p>GTSP Cabinets Builder (Demo)</p>
 			<div class="slideshow-container">
 				<div style="display: block;">
-					<img loading="lazy" src="img/gtsp_cabinet_builder.jpg" style="width:100%">
+					<img src="img/gtsp_cabinet_builder.jpg" style="width:100%">
 				</div>
-				<!-- <a class="prev" onclick="plusSlides(-1, 17)">❮</a>
-				<a class="next" onclick="plusSlides(1, 17)">❯</a> -->
+				<!-- <button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button> -->
 			</div>
 			<div class="desc">
 				<a href="http://gjkngfd.github.io/gtsp_cabinets_builder_basic_demonstation" target="_blank"><i>GTSP Cabinets Builder</i></a> 
@@ -1086,11 +1092,11 @@
 			<p>Minimalistico webpage for an artist promo</p>
 			<div class="slideshow-container">
 				<div style="display: block;">
-					<img loading="lazy" src="img/minimalistico.jpg" style="width:100%">
+					<img src="img/minimalistico.jpg" style="width:100%">
 				</div>
 
-				<!-- <a class="prev" onclick="plusSlides(-1, 17)">❮</a>
-				<a class="next" onclick="plusSlides(1, 17)">❯</a> -->
+				<!-- <button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button> -->
 			</div>
 			<div class="desc">
 				<a href="https://dfjgwrp.github.io/minimalistico_bt/" target="_blank"><i>Minimalistico Bt Webpage</i></a> 
@@ -1106,11 +1112,11 @@
 			<p>puzzlehome.pro</p>
 			<div class="slideshow-container">
 				<div style="display: block;">
-					<img loading="lazy" src="img/puzzlehome1.png" style="width:100%">
+					<img src="img/puzzlehome1.png" style="width:100%">
 				</div>
 
-				<!-- <a class="prev" onclick="plusSlides(-1, 17)">❮</a>
-				<a class="next" onclick="plusSlides(1, 17)">❯</a> -->
+				<!-- <button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button> -->
 			</div>
 			<div class="desc">
 				<a href="https://puzzlehome.pro/projects/38-91/" target="_blank"><i>Online version</i></a> 
@@ -1129,10 +1135,10 @@
 			<p>3up3downsports 3D shop </p>
 			<div class="slideshow-container">
 				<div style="display: block;">
-					<img loading="lazy" src="img/3up3downsports.png" style="width:100%">
+					<img src="img/3up3downsports.png" style="width:100%">
 				</div>
-				<!-- <a class="prev" onclick="plusSlides(-1, 17)">❮</a>
-				<a class="next" onclick="plusSlides(1, 17)">❯</a> -->
+				<!-- <button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button> -->
 			</div>
 			<div class="desc">
 				<a href="https://3up3downsports.com/product/custom-your-glove/
@@ -1154,10 +1160,10 @@
 			<p>cubic.co.at</p>
 			<div class="slideshow-container">
 				<div style="display: block;">
-					<img loading="lazy" src="img/cubic.png" style="width:100%">
+					<img src="img/cubic.png" style="width:100%">
 				</div>
-				<!-- <a class="prev" onclick="plusSlides(-1, 17)">❮</a>
-				<a class="next" onclick="plusSlides(1, 17)">❯</a> -->
+				<!-- <button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button> -->
 			</div>
 			<div class="desc">
 				<a href="http://www.cubic.co.at/moebel/standardmoebel/3d-moebel-ansicht/" target="_blank"><i>cubic.co.at online 3D</i></a> 
@@ -1175,10 +1181,10 @@
 			<p>Steinmetz Werl 3D</p>
 			<div class="slideshow-container">
 				<div style="display: block;">
-					<img loading="lazy" src="img/steinmetzwerl.png" style="width:100%">
+					<img src="img/steinmetzwerl.png" style="width:100%">
 				</div>
-				<!-- <a class="prev" onclick="plusSlides(-1, 17)">❮</a>
-				<a class="next" onclick="plusSlides(1, 17)">❯</a> -->
+				<!-- <button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button> -->
 			</div>
 			<div class="desc">
 				<a href="https://www.steinmetz-werl.at/3D/wp-content/uploads/verge3d/7/index.html" target="_blank"><i>Steinmetz Werl 3D</i></a> 
@@ -1200,10 +1206,10 @@
 			<p>Under The Hood for airtasker</p>
 			<div class="slideshow-container">
 				<div style="display: block;">
-					<img loading="lazy" src="img/underthehood.png" style="width:100%">
+					<img src="img/underthehood.png" style="width:100%">
 				</div>
-				<!-- <a class="prev" onclick="plusSlides(-1, 17)">❮</a>
-				<a class="next" onclick="plusSlides(1, 17)">❯</a> -->
+				<!-- <button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button> -->
 			</div>
 			<div class="desc">
 				<a href="https://gjkngfd.github.io/UnderTheHood" target="_blank"><i>Under The Hood for airtasker WebGL</i></a> 
@@ -1225,23 +1231,23 @@
 			<div class="slideshow-container">
 
 				<div class="mySlides21" style="display: block;">
-					<img loading="lazy" src="img/kitchen3d1.jpg" style="width:100%">
+					<img src="img/kitchen3d1.jpg" style="width:100%">
 				</div>
 
 				<div class="mySlides21" style="display: none;">
-					<img loading="lazy" src="img/kitchen3d2.jpg" style="width:100%">
+					<img src="img/kitchen3d2.jpg" style="width:100%">
 				</div>
 
 				<div class="mySlides21" style="display: none;">
-					<img loading="lazy" src="img/kitchen3d3.jpg" style="width:100%">
+					<img src="img/kitchen3d3.jpg" style="width:100%">
 				</div>
 
 				<div class="mySlides21" style="display: none;">
-					<img loading="lazy" src="img/kitchen3d4.jpg" style="width:100%">
+					<img src="img/kitchen3d4.jpg" style="width:100%">
 				</div>
 
-				<a class="prev" onclick="plusSlides(-1, 20)">❮</a>
-				<a class="next" onclick="plusSlides(1, 20)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 			<div class="desc">
 				<br><br>
@@ -1259,23 +1265,23 @@
 			<div class="slideshow-container">
 
 				<div class="mySlides23" style="display: block;">
-					<img loading="lazy" src="img/Slides23_image0.jpg" style="width:100%">
+					<img src="img/Slides23_image0.jpg" style="width:100%">
 				</div>
 
 				<div class="mySlides23" style="display: none;">
-					<img loading="lazy" src="img/Slides23_image1.jpg" style="width:100%">
+					<img src="img/Slides23_image1.jpg" style="width:100%">
 				</div>
 
 				<div class="mySlides23" style="display: none;">
-					<img loading="lazy" src="img/Slides23_image2.jpg" style="width:100%">
+					<img src="img/Slides23_image2.jpg" style="width:100%">
 				</div>
 
 				<div class="mySlides23" style="display: none;">
-					<iframe loading="lazy" width="100%" height="auto" src="https://www.youtube.com/embed/2NF1InhTxYo" title="YouTube video player" frameborder="0" style="margin-top: 1em;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe width="100%" height="auto" src="https://www.youtube.com/embed/2NF1InhTxYo" title="YouTube video player" frameborder="0" style="margin-top: 1em;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 
-				<a class="prev" onclick="plusSlides(-1, 22)">❮</a>
-				<a class="next" onclick="plusSlides(1, 22)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 			<div class="desc">
 				Created realistic renders and video in Blender3D, an Upwork based contract, 2019 
@@ -1288,19 +1294,19 @@
 			<div class="slideshow-container">
 
 				<div class="mySlides24" style="display: block;">
-					<img loading="lazy" src="img/Slides24_image0.jpg" style="width:100%">
+					<img src="img/Slides24_image0.jpg" style="width:100%">
 				</div>
 
 				<div class="mySlides24" style="display: none;">
-					<img loading="lazy" src="img/Slides24_image1.jpg" style="width:100%">
+					<img src="img/Slides24_image1.jpg" style="width:100%">
 				</div>
 
 				<div class="mySlides24" style="display: none;">
-					<img loading="lazy" src="img/Slides24_image2.jpg" style="width:100%">
+					<img src="img/Slides24_image2.jpg" style="width:100%">
 				</div>
 
-				<a class="prev" onclick="plusSlides(-1, 23)">❮</a>
-				<a class="next" onclick="plusSlides(1, 23)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 			<div class="desc">
 				Models, textures and renders was created in Blender3D / Cycles render, 2018 
@@ -1313,17 +1319,17 @@
 			<div class="slideshow-container">
 
 				<div class="mySlides25" style="display: block;">
-					<img loading="lazy" src="img/Slides25_image0.jpg" style="width:100%">
+					<img src="img/Slides25_image0.jpg" style="width:100%">
 				</div>
 				<div class="mySlides25" style="display: none;">
-					<img loading="lazy" src="img/Slides25_image1.jpg" style="width:100%">
+					<img src="img/Slides25_image1.jpg" style="width:100%">
 				</div>
 				<div class="mySlides25" style="display: none;">
-					<img loading="lazy" src="img/Slides25_image2.jpg" style="width:100%">
+					<img src="img/Slides25_image2.jpg" style="width:100%">
 				</div>
 
-				<a class="prev" onclick="plusSlides(-1, 24)">❮</a>
-				<a class="next" onclick="plusSlides(1, 24)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 			<div class="desc">
 				Minimalistic shower renders with HQ materials & lighting. I modeled and rendered the entire scene, every detail by myself. 
@@ -1336,32 +1342,32 @@
 			<p>Scentcraft.com JavaScript WebGL Engineering </p>
 			<div class="slideshow-container">
 				<div class="mySlides26" style="display: block;">
-					<img loading="lazy" src="img/Slides26_image0.jpg" style="width:100%">
+					<img src="img/Slides26_image0.jpg" style="width:100%">
 				</div>
 				<div class="mySlides26" style="display: none;">
-					<img loading="lazy" src="img/Slides26_image1.jpg" style="width:100%">
+					<img src="img/Slides26_image1.jpg" style="width:100%">
 				</div>
 				<div class="mySlides26" style="display: none;">
-					<img loading="lazy" src="img/Slides26_image2.jpg" style="width:100%">
+					<img src="img/Slides26_image2.jpg" style="width:100%">
 				</div>
 				<div class="mySlides26" style="display: none;">
-					<img loading="lazy" src="img/Slides26_image2_2.jpg" style="width:100%">
+					<img src="img/Slides26_image2_2.jpg" style="width:100%">
 				</div>
 				<div class="mySlides26" style="display: block;">
-					<img loading="lazy" src="img/Slides26_image3.jpg" style="width:100%">
+					<img src="img/Slides26_image3.jpg" style="width:100%">
 				</div>
 				<div class="mySlides26" style="display: none;">
-					<img loading="lazy" src="img/Slides26_image4.jpg" style="width:100%">
+					<img src="img/Slides26_image4.jpg" style="width:100%">
 				</div>
 				<div class="mySlides26" style="display: none;">
-					<img loading="lazy" src="img/Slides26_image5.jpg" style="width:100%">
+					<img src="img/Slides26_image5.jpg" style="width:100%">
 				</div>
 				<div class="mySlides26" style="display: none;">
-					<img loading="lazy" src="img/Slides26_image6.jpg" style="width:100%">
+					<img src="img/Slides26_image6.jpg" style="width:100%">
 				</div>
 
-				<a class="prev" onclick="plusSlides(-1, 25)">❮</a>
-				<a class="next" onclick="plusSlides(1, 25)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 			<div class="desc">
 				<a href="https://scentcraft.com/pages/package-type" target="_blank"><i>Creator scent by Scentcraft</i></a> 
@@ -1379,19 +1385,19 @@
 			<div class="slideshow-container">
 
 				<div class="mySlides27" style="display: block;">
-					<img loading="lazy" src="img/Slides27_image0.jpg" style="width:100%">
+					<img src="img/Slides27_image0.jpg" style="width:100%">
 				</div>
 
 				<div class="mySlides27" style="display: none;">
-					<img loading="lazy" src="img/Slides27_image1.jpg" style="width:100%">
+					<img src="img/Slides27_image1.jpg" style="width:100%">
 				</div>
 
 				<div class="mySlides27" style="display: none;">
-					<img loading="lazy" src="img/Slides27_image2.jpg" style="width:100%">
+					<img src="img/Slides27_image2.jpg" style="width:100%">
 				</div>
 
-				<a class="prev" onclick="plusSlides(-1, 26)">❮</a>
-				<a class="next" onclick="plusSlides(1, 26)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 			<div class="desc">
 				Studio renders for artisans' catalog. The main goal of this project was to realistically recreate all geometry flow.  Plus renders in transparent PNG with high quality gesso shaders. It took me 4 days to complete the work.
@@ -1404,14 +1410,14 @@
 			<div class="slideshow-container">
 
 				<div class="mySlides30" style="display: block;">
-					<img loading="lazy" src="img/Slides30_image0.jpg" style="width:100%">
+					<img src="img/Slides30_image0.jpg" style="width:100%">
 				</div>
 				<div class="mySlides30" style="display: none;">
-					<img loading="lazy" src="img/Slides30_image1.jpg" style="width:100%">
+					<img src="img/Slides30_image1.jpg" style="width:100%">
 				</div>
 
-				<a class="prev" onclick="plusSlides(-1, 29)">❮</a>
-				<a class="next" onclick="plusSlides(1, 29)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 			<div class="desc">
 				A 360 VR cardboard I+r renders for general-vr.com
@@ -1428,10 +1434,10 @@
 			<div class="slideshow-container">
 
 				<div style="display: block;">
-					<img loading="lazy" src="img/3dHouseExterior.jpg" style="width:100%">
+					<img src="img/3dHouseExterior.jpg" style="width:100%">
 				</div>
-				<!-- <a class="prev" onclick="plusSlides(-1, 26)">❮</a>
-				<a class="next" onclick="plusSlides(1, 26)">❯</a> -->
+				<!-- <button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button> -->
 			</div>
 			<div class="desc">
 				<br> Blender3D / Cycles, 2016
@@ -1444,10 +1450,10 @@
 			<div class="slideshow-container">
 
 				<div style="display: block;">
-					<img loading="lazy" src="img/3dFloorPlan.jpg" style="width:100%">
+					<img src="img/3dFloorPlan.jpg" style="width:100%">
 				</div>
-				<!-- <a class="prev" onclick="plusSlides(-1, 26)">❮</a>
-				<a class="next" onclick="plusSlides(1, 26)">❯</a> -->
+				<!-- <button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button> -->
 			</div>
 			<div class="desc">
 				Presentation to the client of the apartment interior design solution. 
@@ -1461,17 +1467,17 @@
 			<div class="slideshow-container">
 
 				<div class="mySlides29" style="display: block;">
-					<img loading="lazy" src="img/Slides29_image0.jpg" style="width:100%">
+					<img src="img/Slides29_image0.jpg" style="width:100%">
 				</div>
 				<div class="mySlides29" style="display: none;">
-					<img loading="lazy" src="img/Slides29_image1.jpg" style="width:100%">
+					<img src="img/Slides29_image1.jpg" style="width:100%">
 				</div>
 				<div class="mySlides29" style="display: none;">
-					<img loading="lazy" src="img/Slides29_image2.jpg" style="width:100%">
+					<img src="img/Slides29_image2.jpg" style="width:100%">
 				</div>
 
-				<a class="prev" onclick="plusSlides(-1, 28)">❮</a>
-				<a class="next" onclick="plusSlides(1, 28)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 			<div class="desc">
 				3d visualisation of an outdoor Hot-Tube Bath. 
@@ -1485,14 +1491,14 @@
 			<div class="slideshow-container">
 
 				<div class="mySlides28" style="display: block;">
-					<img loading="lazy" src="img/Slides28_image1.jpg" style="width:100%">
+					<img src="img/Slides28_image1.jpg" style="width:100%">
 				</div>
 				<div class="mySlides28" style="display: none;">
-					<img loading="lazy" src="img/Slides28_image0.jpg" style="width:100%">
+					<img src="img/Slides28_image0.jpg" style="width:100%">
 				</div>
 
-				<a class="prev" onclick="plusSlides(-1, 27)">❮</a>
-				<a class="next" onclick="plusSlides(1, 27)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 			<div class="desc">
 				3d visualisation of an outdoor Hot-Tube Bath. 
@@ -1506,7 +1512,7 @@
 			<div class="slideshow-container">
 
 				<div style="display: block;">
-					<img loading="lazy" src="img/BentleyTrike.jpg" style="width:100%">
+					<img src="img/BentleyTrike.jpg" style="width:100%">
 				</div>
 			</div>
 			<div class="desc">
@@ -1520,7 +1526,7 @@
 			<div class="slideshow-container">
 
 				<div style="display: block;">
-					<img loading="lazy" src="img/Climbers_3in1.jpg" style="width:100%">
+					<img src="img/Climbers_3in1.jpg" style="width:100%">
 				</div>
 			</div>
 			<div class="desc">
@@ -1534,14 +1540,14 @@
 			<div class="slideshow-container">
 
 				<div class="mySlides31" style="display: block;">
-					<img loading="lazy" src="img/Slides31_image0.jpg" style="width:100%">
+					<img src="img/Slides31_image0.jpg" style="width:100%">
 				</div>
 				<div class="mySlides31" style="display: none;">
-					<img loading="lazy" src="img/Slides31_image1.jpg" style="width:100%">
+					<img src="img/Slides31_image1.jpg" style="width:100%">
 				</div>
 
-				<a class="prev" onclick="plusSlides(-1, 30)">❮</a>
-				<a class="next" onclick="plusSlides(1, 30)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 			<div class="desc">
 				<a href="https://kolter.ru/products/klapany-ognezaderzhivajushhie/" target="_blank"><i>Kolter.ru</i></a> 
@@ -1557,14 +1563,14 @@
 			<div class="slideshow-container">
 
 				<div class="mySlides32" style="display: block;">
-					<img loading="lazy" src="img/Slides32_image1.jpg" style="width:100%">
+					<img src="img/Slides32_image1.jpg" style="width:100%">
 				</div>
 				<div class="mySlides32" style="display: none;">
-					<img loading="lazy" src="img/Slides32_image0.jpg" style="width:100%">
+					<img src="img/Slides32_image0.jpg" style="width:100%">
 				</div>
 
-				<a class="prev" onclick="plusSlides(-1, 31)">❮</a>
-				<a class="next" onclick="plusSlides(1, 31)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 			<div class="desc">
 				Modeled and prepared assets (models, materials, textures) of low-poly 3D environments for several levels in a skate mobile game.
@@ -1578,7 +1584,7 @@
 			<div class="slideshow-container">
 
 				<div style="display: block;">
-					<img loading="lazy" src="img/FuturisticCar.jpg" style="width:100%">
+					<img src="img/FuturisticCar.jpg" style="width:100%">
 				</div>
 			</div>
 			<div class="desc">
@@ -1592,17 +1598,17 @@
 			<div class="slideshow-container">
 
 				<div class="mySlides33" style="display: block;">
-					<img loading="lazy" src="img/Slides33_image0.jpg" style="width:100%">
+					<img src="img/Slides33_image0.jpg" style="width:100%">
 				</div>
 				<div class="mySlides33" style="display: none;">
-					<img loading="lazy" src="img/Slides33_image1.jpg" style="width:100%">
+					<img src="img/Slides33_image1.jpg" style="width:100%">
 				</div>
 				<div class="mySlides33" style="display: none;">
-					<img loading="lazy" src="img/Slides33_image2.jpg" style="width:100%">
+					<img src="img/Slides33_image2.jpg" style="width:100%">
 				</div>
 
-				<a class="prev" onclick="plusSlides(-1, 32)">❮</a>
-				<a class="next" onclick="plusSlides(1, 32)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 			<div class="desc">
 				Penthouse apartment project, Tel Aviv. I modeled/textured/rendered all in 2015.
@@ -1615,14 +1621,14 @@
 			<div class="slideshow-container">
 
 				<div class="mySlides34" style="display: block;">
-					<img loading="lazy" src="img/Slides34_image0.jpg" style="width:100%">
+					<img src="img/Slides34_image0.jpg" style="width:100%">
 				</div>
 				<div class="mySlides34" style="display: none;">
-					<img loading="lazy" src="img/Slides34_image2.jpg" style="width:100%">
+					<img src="img/Slides34_image2.jpg" style="width:100%">
 				</div>
 
-				<a class="prev" onclick="plusSlides(-1, 33)">❮</a>
-				<a class="next" onclick="plusSlides(1, 33)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 			<div class="desc">
 				Blender+Cycles, 2018
@@ -1635,7 +1641,7 @@
 			<div class="slideshow-container">
 
 				<div style="display: block;">
-					<img loading="lazy" src="img/MedEquipment.jpg" style="width:100%">
+					<img src="img/MedEquipment.jpg" style="width:100%">
 				</div>
 			</div>
 			<div class="desc">
@@ -1650,14 +1656,14 @@
 			<div class="slideshow-container">
 
 				<div class="mySlides35" style="display: block;">
-					<img loading="lazy" src="img/Slides35_image0.jpg" style="width:100%">
+					<img src="img/Slides35_image0.jpg" style="width:100%">
 				</div>
 				<div class="mySlides35" style="display: none;">
-					<img loading="lazy" src="img/Slides35_image1.jpg" style="width:100%">
+					<img src="img/Slides35_image1.jpg" style="width:100%">
 				</div>
 
-				<a class="prev" onclick="plusSlides(-1, 34)">❮</a>
-				<a class="next" onclick="plusSlides(1, 34)">❯</a>
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
 			</div>
 			<div class="desc">
 				The job was to create a customizable balcony for manufacturer's website, where details must be switchable, such as - wood walls, stones under the floor, various cabinet styles etc. Parts were made with separate render-layers with png's alpha-channel.
@@ -1670,7 +1676,7 @@
 			<div class="slideshow-container">
 
 				<div style="display: block;">
-					<img loading="lazy" src="img/StockImages.jpg" style="width:100%">
+					<img src="img/StockImages.jpg" style="width:100%">
 				</div>
 			</div>
 			<div class="desc">
@@ -1684,7 +1690,7 @@
 			<div class="slideshow-container">
 
 				<div style="display: block;">
-					<img loading="lazy" src="img/Castle3d.jpg" style="width:100%">
+					<img src="img/Castle3d.jpg" style="width:100%">
 				</div>
 			</div>
 			<div class="desc">
@@ -1698,7 +1704,7 @@
 			<div class="slideshow-container">
 
 				<div style="display: block;">
-					<img loading="lazy" src="img/RingsObj.jpg" style="width:100%">
+					<img src="img/RingsObj.jpg" style="width:100%">
 				</div>
 			</div>
 			<div class="desc">
@@ -1712,7 +1718,7 @@
 			<div class="slideshow-container">
 
 				<div style="display: block;">
-					<iframe loading="lazy" width="100%" height="auto" src="https://www.youtube.com/embed/Cuhdn1LRVwM" title="YouTube video player" frameborder="0"  style="margin-top: 1em;"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe width="100%" height="auto" src="https://www.youtube.com/embed/Cuhdn1LRVwM" title="YouTube video player" frameborder="0"  style="margin-top: 1em;"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 			</div>
 			<div class="desc">
@@ -1730,10 +1736,10 @@
 			<p>Dark Fear Octopus WebGL Demo</p>
 			<div class="slideshow-container">
 				<div style="display: block;">
-					<img loading="lazy" src="img/octopus.png" style="width:100%">
+					<img src="img/octopus.png" style="width:100%">
 				</div>
-				<!-- <a class="prev" onclick="plusSlides(-1, 17)">❮</a>
-				<a class="next" onclick="plusSlides(1, 17)">❯</a> -->
+				<!-- <button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button> -->
 			</div>
 			<div class="desc">
 				<a href="https://gjkngfd.github.io/fear_octopus_demo/" target="_blank"><i>Dark Fear Octopus WebGL Demo</i></a> 
@@ -1752,239 +1758,221 @@
 	</div>
 <script>
 (function () {
-  if (window.__portfolioUiReady) return;
-  window.__portfolioUiReady = true;
+  'use strict';
 
-  function hasClass(element, className) {
-    if (!element || !element.className) return false;
-    return (' ' + element.className + ' ').indexOf(' ' + className + ' ') > -1;
+  if (window.__portfolioStaticUiV9) return;
+  window.__portfolioStaticUiV9 = true;
+
+  function ready(fn) {
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn);
+    else fn();
   }
 
-  function addClass(element, className) {
-    if (!element) return;
-    if (element.classList) element.classList.add(className);
-    else if (!hasClass(element, className)) element.className += ' ' + className;
+  function toArray(list) {
+    return Array.prototype.slice.call(list || []);
   }
 
-  function removeClass(element, className) {
-    if (!element) return;
-    if (element.classList) element.classList.remove(className);
-    else element.className = (' ' + element.className + ' ').replace(' ' + className + ' ', ' ');
+  function hasClass(el, name) {
+    return !!(el && el.classList && el.classList.contains(name));
   }
 
-  function closestByClass(element, className) {
-    while (element && element !== document) {
-      if (hasClass(element, className)) return element;
-      element = element.parentNode;
+  function closest(el, selector) {
+    while (el && el.nodeType === 1) {
+      if (el.matches && el.matches(selector)) return el;
+      el = el.parentElement;
     }
     return null;
   }
 
-  function toArray(collection) {
-    return Array.prototype.slice.call(collection || []);
-  }
-
-  function getElementsByClass(className) {
-    return toArray(document.getElementsByClassName(className));
-  }
-
-  function getSlidesInContainer(container) {
+  function slideElements(container) {
     if (!container) return [];
-    return toArray(container.getElementsByTagName('div')).filter(function (element) {
-      return /(^|\s)mySlides\d+(\s|$)/.test(element.className || '');
+    return toArray(container.children).filter(function (child) {
+      if (!child || child.tagName !== 'DIV') return false;
+      if (child.classList && (child.classList.contains('image-missing-note') || child.classList.contains('slide-counter'))) return false;
+      if (/\bmySlides\d+\b/.test(child.className || '')) return true;
+      if (child.querySelector && child.querySelector('img, video, iframe')) return true;
+      return false;
     });
   }
 
-  function showSlideInContainer(container, index) {
-    var slides = getSlidesInContainer(container);
+  function showSlide(container, index) {
+    var slides = slideElements(container);
     if (!slides.length) return;
 
     var total = slides.length;
-    var nextIndex = index;
-    if (nextIndex > total) nextIndex = 1;
-    if (nextIndex < 1) nextIndex = total;
+    var next = Number(index) || 0;
+    if (next < 0) next = total - 1;
+    if (next >= total) next = 0;
 
-    container.setAttribute('data-slide-index', String(nextIndex));
-    for (var i = 0; i < slides.length; i += 1) {
-      slides[i].style.display = i === nextIndex - 1 ? 'block' : 'none';
-    }
+    container.dataset.currentSlide = String(next);
+    container.dataset.totalSlides = String(total);
+
+    container.classList.add('is-ready');
+    slides.forEach(function (slide, i) {
+      var isCurrent = i === next;
+      slide.style.display = isCurrent ? 'block' : 'none';
+      slide.classList.toggle('is-current-slide', isCurrent);
+      slide.setAttribute('aria-hidden', isCurrent ? 'false' : 'true');
+    });
+
+    var counter = container.querySelector('.slide-counter');
+    if (counter) counter.textContent = String(next + 1) + ' / ' + String(total);
   }
 
-  function moveContainerSlider(container, direction) {
+  function moveSlide(container, delta) {
+    var current = Number(container.dataset.currentSlide || 0);
+    showSlide(container, current + delta);
+  }
+
+  function setupSlider(container) {
+    var slides = slideElements(container);
+    var prev = container.querySelector('.prev');
+    var next = container.querySelector('.next');
+
+    if (!slides.length) return;
+
+    if (slides.length > 1 && !container.querySelector('.slide-counter')) {
+      var counter = document.createElement('span');
+      counter.className = 'slide-counter';
+      counter.setAttribute('aria-live', 'polite');
+      container.appendChild(counter);
+    }
+
+    if (slides.length <= 1) {
+      if (prev) prev.style.display = 'none';
+      if (next) next.style.display = 'none';
+    } else {
+      if (prev) prev.style.display = '';
+      if (next) next.style.display = '';
+    }
+
+    showSlide(container, 0);
+  }
+
+  function setupMissingImages() {
+    toArray(document.querySelectorAll('img')).forEach(function (img) {
+      img.addEventListener('error', function () {
+        var wrap = closest(img, '.slideshow-container') || img.parentElement;
+        if (!wrap || wrap.querySelector('.image-missing-note')) return;
+        var note = document.createElement('div');
+        note.className = 'image-missing-note';
+        note.textContent = 'Image file missing on server';
+        wrap.appendChild(note);
+        img.style.display = 'none';
+      });
+    });
+  }
+
+  function setupNavigation() {
+    var bio = document.getElementById('mainBioContent');
+    var portfolio = document.getElementById('mainPortfolioContent');
+    var webItems = toArray(document.querySelectorAll('.FrontEndItem'));
+    var graphicItems = toArray(document.querySelectorAll('.BlenderItem'));
+
+    var nav = {
+      about: document.getElementById('bioLink'),
+      portfolio: document.getElementById('portfolioLink'),
+      webgl: document.getElementById('frontendLink'),
+      graphics: document.getElementById('grafics3dLink')
+    };
+
+    function setActive(name) {
+      Object.keys(nav).forEach(function (key) {
+        if (!nav[key]) return;
+        nav[key].classList.toggle('is-active', key === name);
+      });
+    }
+
+    function showBio() {
+      if (bio) bio.style.display = 'flex';
+      if (portfolio) portfolio.style.display = 'none';
+      webItems.concat(graphicItems).forEach(function (item) { item.style.display = ''; });
+      setActive('about');
+      document.body.classList.remove('showing-portfolio');
+      document.body.classList.add('showing-bio');
+    }
+
+    function showPortfolio(filter) {
+      if (bio) bio.style.display = 'none';
+      if (portfolio) portfolio.style.display = 'grid';
+
+      webItems.forEach(function (item) {
+        item.style.display = filter === 'graphics' ? 'none' : 'block';
+      });
+      graphicItems.forEach(function (item) {
+        item.style.display = filter === 'webgl' ? 'none' : 'block';
+      });
+
+      setActive(filter === 'webgl' ? 'webgl' : filter === 'graphics' ? 'graphics' : 'portfolio');
+      document.body.classList.remove('showing-bio');
+      document.body.classList.add('showing-portfolio');
+    }
+
+    function route(hash) {
+      hash = (hash || window.location.hash || '').toLowerCase();
+      var path = (window.location.pathname || '').toLowerCase();
+
+      if (hash === '#portfolio' || hash === '#works' || hash === '#all') showPortfolio('all');
+      else if (hash === '#webgl' || hash === '#frontend' || hash === '#front-end' || hash === '#code') showPortfolio('webgl');
+      else if (hash === '#graphics' || hash === '#graphic' || hash === '#3d' || hash === '#blender') showPortfolio('graphics');
+      else if (hash === '#about' || hash === '#bio' || hash === '#resume') showBio();
+      else if (path.indexOf('portfolio') !== -1) showPortfolio('all');
+      else showBio();
+    }
+
+    function go(hash) {
+      if (window.history && window.history.pushState) window.history.pushState(null, '', hash);
+      else window.location.hash = hash;
+      route(hash);
+    }
+
+    if (nav.about) nav.about.addEventListener('click', function (e) { e.preventDefault(); go('#about'); });
+    if (nav.portfolio) nav.portfolio.addEventListener('click', function (e) { e.preventDefault(); go('#portfolio'); });
+    if (nav.webgl) nav.webgl.addEventListener('click', function (e) { e.preventDefault(); go('#webgl'); });
+    if (nav.graphics) nav.graphics.addEventListener('click', function (e) { e.preventDefault(); go('#graphics'); });
+
+    toArray(document.querySelectorAll('[data-show-portfolio]')).forEach(function (link) {
+      link.addEventListener('click', function (e) { e.preventDefault(); go('#portfolio'); });
+    });
+
+    window.addEventListener('hashchange', function () { route(); });
+    route();
+  }
+
+  document.addEventListener('click', function (event) {
+    var button = closest(event.target, '.prev, .next');
+    if (!button) return;
+    var container = closest(button, '.slideshow-container');
     if (!container) return;
-    var current = parseInt(container.getAttribute('data-slide-index'), 10) || 1;
-    showSlideInContainer(container, current + direction);
-  }
 
-  window.plusSlides = function plusSlides(direction, oldSlideNumber) {
-    var eventObject = window.event || null;
-    var clicked = eventObject && (eventObject.target || eventObject.srcElement);
-    var container = clicked ? closestByClass(clicked, 'slideshow-container') : null;
+    event.preventDefault();
+    event.stopPropagation();
+    if (event.stopImmediatePropagation) event.stopImmediatePropagation();
+    moveSlide(container, hasClass(button, 'prev') ? -1 : 1);
+  }, true);
 
-    if (!container && typeof oldSlideNumber !== 'undefined') {
-      var slideClass = 'mySlides' + (Number(oldSlideNumber) + 1);
-      var oldSlides = getElementsByClass(slideClass);
-      if (oldSlides.length) container = closestByClass(oldSlides[0], 'slideshow-container');
+  window.plusSlides = function (direction, legacyIndex) {
+    var containers = toArray(document.querySelectorAll('.slideshow-container'));
+    var chosen = null;
+
+    if (typeof legacyIndex === 'number') {
+      chosen = containers.filter(function (container) {
+        return slideElements(container).some(function (slide) {
+          return /\bmySlides\d+\b/.test(slide.className || '');
+        });
+      })[legacyIndex] || null;
     }
 
-    if (container) moveContainerSlider(container, direction < 0 ? -1 : 1);
+    if (!chosen && window.event) chosen = closest(window.event.target || window.event.srcElement, '.slideshow-container');
+    if (chosen) moveSlide(chosen, direction < 0 ? -1 : 1);
     return false;
   };
 
-  function initializeSlides() {
-    var containers = getElementsByClass('slideshow-container');
-
-    for (var i = 0; i < containers.length; i += 1) {
-      var container = containers[i];
-      var slides = getSlidesInContainer(container);
-      if (slides.length) showSlideInContainer(container, 1);
-
-      var buttons = toArray(container.getElementsByTagName('a'));
-      for (var b = 0; b < buttons.length; b += 1) {
-        if (!hasClass(buttons[b], 'prev') && !hasClass(buttons[b], 'next')) continue;
-
-        buttons[b].removeAttribute('onclick');
-
-        if (slides.length <= 1) {
-          buttons[b].style.display = 'none';
-          continue;
-        }
-
-        buttons[b].onclick = function (event) {
-          event = event || window.event;
-          var target = event.target || event.srcElement;
-          var button = closestByClass(target, 'prev') || closestByClass(target, 'next') || target;
-          var localContainer = closestByClass(button, 'slideshow-container');
-          var direction = hasClass(button, 'prev') ? -1 : 1;
-
-          if (event.preventDefault) event.preventDefault();
-          if (event.stopPropagation) event.stopPropagation();
-          moveContainerSlider(localContainer, direction);
-          return false;
-        };
-      }
-    }
-  }
-
-  function initializeNavigation() {
-    var mainBioContent = document.getElementById('mainBioContent');
-    var mainPortfolioContent = document.getElementById('mainPortfolioContent');
-    var webItems = getElementsByClass('FrontEndItem');
-    var graphicsItems = getElementsByClass('BlenderItem');
-
-    var controls = {
-      bio: document.getElementById('bioLink'),
-      portfolio: document.getElementById('portfolioLink'),
-      frontend: document.getElementById('frontendLink'),
-      grafics3d: document.getElementById('grafics3dLink')
-    };
-
-    function setActive(activeKey) {
-      for (var key in controls) {
-        if (!Object.prototype.hasOwnProperty.call(controls, key)) continue;
-        removeClass(controls[key], 'is-active');
-        if (key === activeKey) addClass(controls[key], 'is-active');
-      }
-    }
-
-    function setPortfolioFilter(filter) {
-      if (mainPortfolioContent) mainPortfolioContent.style.display = 'grid';
-      if (mainBioContent) mainBioContent.style.display = 'flex';
-
-      for (var i = 0; i < webItems.length; i += 1) {
-        webItems[i].style.display = filter === 'graphics' ? 'none' : 'block';
-      }
-      for (var j = 0; j < graphicsItems.length; j += 1) {
-        graphicsItems[j].style.display = filter === 'frontend' ? 'none' : 'block';
-      }
-
-      if (filter === 'frontend') setActive('frontend');
-      else if (filter === 'graphics') setActive('grafics3d');
-      else setActive('portfolio');
-    }
-
-    function scrollToElement(element) {
-      if (!element) return;
-      try { element.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-      catch (e) { element.scrollIntoView(true); }
-    }
-
-    function showPortfolio(filter, shouldScroll) {
-      setPortfolioFilter(filter);
-      if (shouldScroll !== false) scrollToElement(mainPortfolioContent);
-    }
-
-    function showBio(shouldScroll) {
-      if (mainBioContent) mainBioContent.style.display = 'flex';
-      if (mainPortfolioContent) mainPortfolioContent.style.display = 'grid';
-      setActive('bio');
-      if (shouldScroll !== false) scrollToElement(mainBioContent);
-    }
-
-    function bindControl(element, handler, hash) {
-      if (!element) return;
-      element.onclick = function (event) {
-        event = event || window.event;
-        if (event.preventDefault) event.preventDefault();
-        handler(true);
-        if (hash && window.history && window.history.pushState) window.history.pushState(null, '', hash);
-        else if (hash) window.location.hash = hash;
-        return false;
-      };
-    }
-
-    bindControl(controls.bio, function () { showBio(true); }, '#about');
-    bindControl(controls.portfolio, function () { showPortfolio('all', true); }, '#portfolio');
-    bindControl(controls.frontend, function () { showPortfolio('frontend', true); }, '#webgl');
-    bindControl(controls.grafics3d, function () { showPortfolio('graphics', true); }, '#graphics');
-
-    var allLinks = document.getElementsByTagName('a');
-    for (var i = 0; i < allLinks.length; i += 1) {
-      if (!allLinks[i].getAttribute('data-show-portfolio')) continue;
-      bindControl(allLinks[i], function () { showPortfolio('all', true); }, '#portfolio');
-    }
-
-    function applyHash(initialLoad) {
-      var hash = (window.location.hash || '').toLowerCase();
-      if (hash === '#portfolio' || hash === '#works' || hash === '#all') showPortfolio('all', !initialLoad);
-      else if (hash === '#webgl' || hash === '#frontend' || hash === '#front-end' || hash === '#code') showPortfolio('frontend', !initialLoad);
-      else if (hash === '#graphics' || hash === '#graphic' || hash === '#3d' || hash === '#blender') showPortfolio('graphics', !initialLoad);
-      else if (hash === '#about' || hash === '#bio' || hash === '#resume') showBio(!initialLoad);
-      else {
-        setPortfolioFilter('all');
-        setActive('bio');
-      }
-    }
-
-    applyHash(true);
-    if (window.addEventListener) window.addEventListener('hashchange', function () { applyHash(false); }, false);
-    else if (window.attachEvent) window.attachEvent('onhashchange', function () { applyHash(false); });
-  }
-
-  function replaceBrokenImagesWithPlaceholder() {
-    var images = document.getElementsByTagName('img');
-    for (var i = 0; i < images.length; i += 1) {
-      images[i].onerror = function () {
-        var holder = document.createElement('div');
-        holder.className = 'missing-image-placeholder';
-        holder.innerHTML = 'Image file missing';
-        if (this.parentNode) this.parentNode.replaceChild(holder, this);
-      };
-    }
-  }
-
-  function initialize() {
-    replaceBrokenImagesWithPlaceholder();
-    initializeSlides();
-    initializeNavigation();
-  }
-
-  if (document.readyState === 'loading') {
-    if (document.addEventListener) document.addEventListener('DOMContentLoaded', initialize, false);
-    else window.onload = initialize;
-  } else {
-    initialize();
-  }
+  ready(function () {
+    toArray(document.querySelectorAll('.slideshow-container')).forEach(setupSlider);
+    setupMissingImages();
+    setupNavigation();
+  });
 })();
 
 </script>
