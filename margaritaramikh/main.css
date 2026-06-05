@@ -34,7 +34,8 @@ body {
     radial-gradient(circle at 18% 12%, rgba(124, 140, 255, 0.17), transparent 30rem),
     radial-gradient(circle at 85% 18%, rgba(240, 169, 77, 0.13), transparent 28rem),
     linear-gradient(135deg, #050608 0%, #0b1018 42%, #07090d 100%);
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 body::before {
@@ -113,10 +114,6 @@ p {
   text-transform: uppercase;
 }
 
-#bio,
-#portfolio,
-#frontend,
-#grafics3d,
 #portfoliolink a {
   display: inline-flex;
   width: 100%;
@@ -130,15 +127,8 @@ p {
   background: rgba(255, 255, 255, 0.03);
 }
 
-#bio:hover,
-#portfolio:hover,
-#frontend:hover,
-#grafics3d:hover,
 #portfoliolink a:hover,
-#bio.is-active,
-#portfolio.is-active,
-#frontend.is-active,
-#grafics3d.is-active {
+#portfoliolink a.is-active {
   color: var(--text) !important;
   border-color: var(--border-strong);
   background: rgba(255, 255, 255, 0.075);
@@ -162,18 +152,16 @@ footer {
 
 #mainPortfolioContent,
 #mainBioContent {
-  position: fixed;
-  top: 0;
-  left: var(--nav-width);
-  width: calc(100vw - var(--nav-width));
-  height: 100vh;
-  overflow-y: auto;
-  overflow-x: hidden;
+  position: relative;
+  width: calc(100% - var(--nav-width));
+  min-height: 100vh;
+  margin-left: var(--nav-width);
+  overflow: visible;
   padding: 2rem;
 }
 
 #mainPortfolioContent {
-  display: none;
+  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr));
   align-content: start;
   gap: 1.25rem;
@@ -512,11 +500,9 @@ div.desc strong {
 
   #mainPortfolioContent,
   #mainBioContent {
-    position: relative;
-    left: 0;
     width: 100%;
-    height: auto;
-    min-height: 100vh;
+    margin-left: 0;
+    min-height: auto;
     padding: 1rem;
     overflow: visible;
   }
@@ -557,13 +543,14 @@ div.desc strong {
 }
 
 
-/* CSS fallback for GitHub Pages/hash navigation. Portfolio now appears even if JavaScript is blocked or cached. */
+
+/* Hash anchors and no-JS filtering. The portfolio remains visible in normal document flow. */
 .hash-anchor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 1px;
-  height: 1px;
+  display: block !important;
+  position: relative !important;
+  top: -1rem;
+  width: 1px !important;
+  height: 1px !important;
   overflow: hidden;
   opacity: 0;
   pointer-events: none;
@@ -598,18 +585,6 @@ div.desc strong {
   background: rgba(255, 255, 255, 0.075);
 }
 
-#portfolio:target ~ #mainBioContent,
-#webgl:target ~ #mainBioContent,
-#graphics:target ~ #mainBioContent {
-  display: none;
-}
-
-#portfolio:target ~ #mainPortfolioContent,
-#webgl:target ~ #mainPortfolioContent,
-#graphics:target ~ #mainPortfolioContent {
-  display: grid;
-}
-
 #webgl:target ~ #mainPortfolioContent .BlenderItem {
   display: none;
 }
@@ -618,10 +593,14 @@ div.desc strong {
   display: none;
 }
 
-#about:target ~ #mainBioContent {
-  display: flex;
-}
-
-#about:target ~ #mainPortfolioContent {
-  display: none;
+.missing-image-placeholder {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  min-height: 12rem;
+  color: var(--muted-2);
+  background: rgba(255,255,255,0.04);
+  border: 1px dashed var(--border-strong);
+  font-size: 0.85rem;
 }
