@@ -555,3 +555,73 @@ div.desc strong {
     aspect-ratio: 4 / 3;
   }
 }
+
+
+/* CSS fallback for GitHub Pages/hash navigation. Portfolio now appears even if JavaScript is blocked or cached. */
+.hash-anchor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#bioLink,
+#portfolioLink,
+#frontendLink,
+#grafics3dLink {
+  display: inline-flex;
+  width: 100%;
+  cursor: pointer;
+  color: var(--muted) !important;
+  text-decoration: none !important;
+  padding: 0.7rem 0.85rem;
+  margin: 0.15rem 0;
+  border: 1px solid transparent;
+  border-radius: 0.85rem;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+#bioLink:hover,
+#portfolioLink:hover,
+#frontendLink:hover,
+#grafics3dLink:hover,
+#bioLink.is-active,
+#portfolioLink.is-active,
+#frontendLink.is-active,
+#grafics3dLink.is-active {
+  color: var(--text) !important;
+  border-color: var(--border-strong);
+  background: rgba(255, 255, 255, 0.075);
+}
+
+#portfolio:target ~ #mainBioContent,
+#webgl:target ~ #mainBioContent,
+#graphics:target ~ #mainBioContent {
+  display: none;
+}
+
+#portfolio:target ~ #mainPortfolioContent,
+#webgl:target ~ #mainPortfolioContent,
+#graphics:target ~ #mainPortfolioContent {
+  display: grid;
+}
+
+#webgl:target ~ #mainPortfolioContent .BlenderItem {
+  display: none;
+}
+
+#graphics:target ~ #mainPortfolioContent .FrontEndItem {
+  display: none;
+}
+
+#about:target ~ #mainBioContent {
+  display: flex;
+}
+
+#about:target ~ #mainPortfolioContent {
+  display: none;
+}
