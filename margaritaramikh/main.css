@@ -657,3 +657,100 @@ button.next:hover {
 .slideshow-container.is-ready > div.is-current-slide {
   display: block;
 }
+
+
+/* ==========================================================
+   Portfolio slider height fix
+   Fixes collapsed/too-thin slideshow blocks at normal browser zoom,
+   especially Safari/desktop zoom combinations.
+   ========================================================== */
+body.showing-portfolio {
+  overflow: hidden;
+}
+
+#mainPortfolioContent {
+  inset: 0 0 0 var(--nav-width);
+  width: auto;
+  height: 100dvh;
+  align-items: start;
+  padding-bottom: 4rem;
+}
+
+@supports not (height: 100dvh) {
+  #mainPortfolioContent {
+    height: 100vh;
+  }
+}
+
+div.gallery {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.slideshow-container {
+  position: relative;
+  flex: 0 0 auto;
+  width: 100%;
+  height: clamp(13.5rem, 18vw, 18.5rem);
+  min-height: 13.5rem;
+  aspect-ratio: auto;
+}
+
+.slideshow-container > div:not(.image-missing-note) {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.slideshow-container > div:not(.image-missing-note):first-of-type {
+  display: block;
+}
+
+.slideshow-container.is-ready > div:not(.image-missing-note) {
+  display: none;
+}
+
+.slideshow-container.is-ready > div.is-current-slide {
+  display: block;
+}
+
+.slideshow-container > div:not(.image-missing-note) > img,
+.slideshow-container > div:not(.image-missing-note) > video,
+.slideshow-container > div:not(.image-missing-note) > iframe {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  object-fit: contain;
+  border: 0;
+}
+
+.image-missing-note {
+  position: absolute;
+  inset: 1rem;
+  display: flex !important;
+  min-height: 0;
+  margin: 0;
+}
+
+@media screen and (max-width: 980px) {
+  body.showing-portfolio {
+    overflow: auto;
+  }
+
+  #mainPortfolioContent {
+    inset: auto;
+    height: auto;
+    padding-bottom: 2rem;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .slideshow-container {
+    height: clamp(12rem, 62vw, 18rem);
+    min-height: 12rem;
+  }
+}
