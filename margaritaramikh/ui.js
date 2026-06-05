@@ -74,11 +74,7 @@
       if (oldSlides.length) container = closestByClass(oldSlides[0], 'slideshow-container');
     }
 
-    if (container) {
-      moveContainerSlider(container, direction < 0 ? -1 : 1);
-      return false;
-    }
-
+    if (container) moveContainerSlider(container, direction < 0 ? -1 : 1);
     return false;
   };
 
@@ -138,9 +134,9 @@
       }
     }
 
-    function showPortfolio(filter) {
-      if (mainBioContent) mainBioContent.style.display = 'none';
+    function setPortfolioFilter(filter) {
       if (mainPortfolioContent) mainPortfolioContent.style.display = 'grid';
+      if (mainBioContent) mainBioContent.style.display = 'flex';
 
       for (var i = 0; i < webItems.length; i += 1) {
         webItems[i].style.display = filter === 'graphics' ? 'none' : 'block';
@@ -154,10 +150,22 @@
       else setActive('portfolio');
     }
 
-    function showBio() {
+    function scrollToElement(element) {
+      if (!element) return;
+      try { element.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      catch (e) { element.scrollIntoView(true); }
+    }
+
+    function showPortfolio(filter, shouldScroll) {
+      setPortfolioFilter(filter);
+      if (shouldScroll !== false) scrollToElement(mainPortfolioContent);
+    }
+
+    function showBio(shouldScroll) {
       if (mainBioContent) mainBioContent.style.display = 'flex';
-      if (mainPortfolioContent) mainPortfolioContent.style.display = 'none';
+      if (mainPortfolioContent) mainPortfolioContent.style.display = 'grid';
       setActive('bio');
+      if (shouldScroll !== false) scrollToElement(mainBioContent);
     }
 
     function bindControl(element, handler, hash) {
@@ -165,43 +173,55 @@
       element.onclick = function (event) {
         event = event || window.event;
         if (event.preventDefault) event.preventDefault();
-        handler();
-        if (hash && window.history && window.history.replaceState) window.history.replaceState(null, '', hash);
+        handler(true);
+        if (hash && window.history && window.history.pushState) window.history.pushState(null, '', hash);
+        else if (hash) window.location.hash = hash;
         return false;
       };
     }
 
-    bindControl(controls.bio, showBio, '#about');
-    bindControl(controls.portfolio, function () { showPortfolio('all'); }, '#portfolio');
-    bindControl(controls.frontend, function () { showPortfolio('frontend'); }, '#webgl');
-    bindControl(controls.grafics3d, function () { showPortfolio('graphics'); }, '#graphics');
+    bindControl(controls.bio, function () { showBio(true); }, '#about');
+    bindControl(controls.portfolio, function () { showPortfolio('all', true); }, '#portfolio');
+    bindControl(controls.frontend, function () { showPortfolio('frontend', true); }, '#webgl');
+    bindControl(controls.grafics3d, function () { showPortfolio('graphics', true); }, '#graphics');
 
     var allLinks = document.getElementsByTagName('a');
     for (var i = 0; i < allLinks.length; i += 1) {
       if (!allLinks[i].getAttribute('data-show-portfolio')) continue;
-      bindControl(allLinks[i], function () { showPortfolio('all'); }, '#portfolio');
+      bindControl(allLinks[i], function () { showPortfolio('all', true); }, '#portfolio');
     }
 
-    function applyHash() {
+    function applyHash(initialLoad) {
       var hash = (window.location.hash || '').toLowerCase();
-      var path = window.location.pathname || '';
-      var isPortfolioPage = /portfolio/i.test(path);
-
-      if (hash === '#portfolio' || hash === '#works' || hash === '#all') showPortfolio('all');
-      else if (hash === '#webgl' || hash === '#frontend' || hash === '#front-end' || hash === '#code') showPortfolio('frontend');
-      else if (hash === '#graphics' || hash === '#graphic' || hash === '#3d' || hash === '#blender') showPortfolio('graphics');
-      else if (hash === '#about' || hash === '#bio' || hash === '#resume') showBio();
-      else if (isPortfolioPage) showPortfolio('all');
-      else showBio();
+      if (hash === '#portfolio' || hash === '#works' || hash === '#all') showPortfolio('all', !initialLoad);
+      else if (hash === '#webgl' || hash === '#frontend' || hash === '#front-end' || hash === '#code') showPortfolio('frontend', !initialLoad);
+      else if (hash === '#graphics' || hash === '#graphic' || hash === '#3d' || hash === '#blender') showPortfolio('graphics', !initialLoad);
+      else if (hash === '#about' || hash === '#bio' || hash === '#resume') showBio(!initialLoad);
+      else {
+        setPortfolioFilter('all');
+        setActive('bio');
+      }
     }
 
-    applyHash();
+    applyHash(true);
+    if (window.addEventListener) window.addEventListener('hashchange', function () { applyHash(false); }, false);
+    else if (window.attachEvent) window.attachEvent('onhashchange', function () { applyHash(false); });
+  }
 
-    if (window.addEventListener) window.addEventListener('hashchange', applyHash, false);
-    else if (window.attachEvent) window.attachEvent('onhashchange', applyHash);
+  function replaceBrokenImagesWithPlaceholder() {
+    var images = document.getElementsByTagName('img');
+    for (var i = 0; i < images.length; i += 1) {
+      images[i].onerror = function () {
+        var holder = document.createElement('div');
+        holder.className = 'missing-image-placeholder';
+        holder.innerHTML = 'Image file missing';
+        if (this.parentNode) this.parentNode.replaceChild(holder, this);
+      };
+    }
   }
 
   function initialize() {
+    replaceBrokenImagesWithPlaceholder();
     initializeSlides();
     initializeNavigation();
   }
