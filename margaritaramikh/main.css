@@ -658,82 +658,114 @@ button.next:hover {
   display: block;
 }
 
-
 /* ==========================================================
-   Portfolio slider height fix
-   Fixes collapsed/too-thin slideshow blocks at normal browser zoom,
-   especially Safari/desktop zoom combinations.
+   Portfolio slider reset fix v2
+   Paste this at the VERY BOTTOM of main.css.
+   It cancels the previous absolute-position slider patch that
+   made portfolio cards collapse/stick on top of each other.
    ========================================================== */
+
+#mainPortfolioContent {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr));
+  grid-auto-rows: auto !important;
+  align-items: start !important;
+  align-content: start !important;
+  gap: 1.25rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 body.showing-portfolio {
   overflow: hidden;
 }
 
-#mainPortfolioContent {
-  inset: 0 0 0 var(--nav-width);
-  width: auto;
-  height: 100dvh;
-  align-items: start;
-  padding-bottom: 4rem;
-}
-
-@supports not (height: 100dvh) {
-  #mainPortfolioContent {
-    height: 100vh;
-  }
-}
-
 div.gallery {
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
+  position: relative !important;
+  display: block !important;
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+
+div.gallery > p:first-child {
+  position: relative !important;
+  z-index: 1;
+  min-height: 4.3rem;
 }
 
 .slideshow-container {
-  position: relative;
-  flex: 0 0 auto;
-  width: 100%;
-  height: clamp(13.5rem, 18vw, 18.5rem);
-  min-height: 13.5rem;
-  aspect-ratio: auto;
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  height: clamp(12rem, 18vw, 18rem) !important;
+  min-height: 12rem !important;
+  max-height: 18rem !important;
+  aspect-ratio: auto !important;
+  overflow: hidden !important;
+  flex: none !important;
 }
 
+.slideshow-container > div,
 .slideshow-container > div:not(.image-missing-note) {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  position: static !important;
+  inset: auto !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
   display: none;
 }
 
+.slideshow-container > div:first-of-type,
 .slideshow-container > div:not(.image-missing-note):first-of-type {
   display: block;
 }
 
+.slideshow-container.is-ready > div,
 .slideshow-container.is-ready > div:not(.image-missing-note) {
   display: none;
 }
 
-.slideshow-container.is-ready > div.is-current-slide {
+.slideshow-container.is-ready > div.is-current-slide,
+.slideshow-container.is-ready > div.is-current-slide:not(.image-missing-note) {
   display: block;
 }
 
-.slideshow-container > div:not(.image-missing-note) > img,
-.slideshow-container > div:not(.image-missing-note) > video,
-.slideshow-container > div:not(.image-missing-note) > iframe {
-  display: block;
+.slideshow-container img,
+.slideshow-container video,
+.slideshow-container iframe,
+div.gallery img,
+div.gallery video,
+div.gallery iframe {
+  display: block !important;
   width: 100% !important;
   height: 100% !important;
+  max-width: 100% !important;
   margin: 0 !important;
-  object-fit: contain;
-  border: 0;
+  object-fit: contain !important;
+  border: 0 !important;
+}
+
+div.desc {
+  position: relative !important;
+  display: block !important;
+  height: auto !important;
+  max-height: 10.5rem;
+  overflow-y: auto;
+}
+
+.prev,
+.next,
+.slide-counter {
+  position: absolute !important;
 }
 
 .image-missing-note {
-  position: absolute;
-  inset: 1rem;
+  position: static !important;
   display: flex !important;
-  min-height: 0;
-  margin: 0;
+  height: 100% !important;
+  min-height: 0 !important;
+  margin: 0 !important;
 }
 
 @media screen and (max-width: 980px) {
@@ -742,15 +774,23 @@ div.gallery {
   }
 
   #mainPortfolioContent {
-    inset: auto;
+    position: relative;
+    left: 0;
+    width: 100%;
     height: auto;
-    padding-bottom: 2rem;
+    min-height: 100vh;
+    padding: 1rem;
+    overflow: visible;
   }
 }
 
 @media screen and (max-width: 560px) {
   .slideshow-container {
-    height: clamp(12rem, 62vw, 18rem);
-    min-height: 12rem;
+    height: clamp(11rem, 62vw, 17rem) !important;
+    min-height: 11rem !important;
+  }
+
+  div.gallery > p:first-child {
+    min-height: auto;
   }
 }
