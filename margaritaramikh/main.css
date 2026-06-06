@@ -659,84 +659,109 @@ button.next:hover {
 }
 
 /* ==========================================================
-   Portfolio slider reset fix v2
-   Paste this at the VERY BOTTOM of main.css.
-   It cancels the previous absolute-position slider patch that
-   made portfolio cards collapse/stick on top of each other.
+   Portfolio layout + slider fix v3
+   Use this on a CLEAN main.css, or paste at the very bottom.
+   It replaces the portfolio grid with a flex layout so Safari
+   cannot collapse grid rows and stack cards over each other.
    ========================================================== */
 
 #mainPortfolioContent {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr));
-  grid-auto-rows: auto !important;
-  align-items: start !important;
-  align-content: start !important;
-  gap: 1.25rem;
-  overflow-y: auto;
-  overflow-x: hidden;
+  align-content: flex-start !important;
+  align-items: flex-start !important;
+  gap: 1.25rem !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding-bottom: 4rem !important;
 }
 
-body.showing-portfolio {
-  overflow: hidden;
+body.showing-portfolio #mainPortfolioContent,
+#portfolio:target ~ #mainPortfolioContent,
+#webgl:target ~ #mainPortfolioContent,
+#graphics:target ~ #mainPortfolioContent {
+  display: flex !important;
+  flex-wrap: wrap !important;
 }
 
-div.gallery {
+#about:target ~ #mainPortfolioContent,
+body.showing-bio #mainPortfolioContent {
+  display: none !important;
+}
+
+#mainPortfolioContent .portfolio-intro {
+  flex: 0 0 100% !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+
+#portfolio:target ~ #mainPortfolioContent .FrontEndItem,
+#portfolio:target ~ #mainPortfolioContent .BlenderItem,
+#webgl:target ~ #mainPortfolioContent .FrontEndItem,
+#graphics:target ~ #mainPortfolioContent .BlenderItem,
+body.showing-portfolio #mainPortfolioContent .gallery {
+  display: flex !important;
+}
+
+#webgl:target ~ #mainPortfolioContent .BlenderItem,
+#graphics:target ~ #mainPortfolioContent .FrontEndItem {
+  display: none !important;
+}
+
+#mainPortfolioContent div.gallery {
+  flex: 1 1 21rem !important;
+  min-width: min(100%, 21rem) !important;
+  max-width: none !important;
+  align-self: flex-start !important;
+  flex-direction: column !important;
   position: relative !important;
-  display: block !important;
   height: auto !important;
   min-height: 0 !important;
+  margin: 0 !important;
   overflow: hidden !important;
 }
 
-div.gallery > p:first-child {
+#mainPortfolioContent div.gallery > p:first-child {
+  flex: 0 0 auto !important;
   position: relative !important;
-  z-index: 1;
-  min-height: 4.3rem;
+  z-index: 1 !important;
+  min-height: 4.3rem !important;
 }
 
-.slideshow-container {
+#mainPortfolioContent .slideshow-container {
+  flex: 0 0 auto !important;
   position: relative !important;
   display: block !important;
   width: 100% !important;
-  height: clamp(12rem, 18vw, 18rem) !important;
-  min-height: 12rem !important;
-  max-height: 18rem !important;
+  height: clamp(13rem, 18vw, 18.5rem) !important;
+  min-height: 13rem !important;
+  max-height: 18.5rem !important;
   aspect-ratio: auto !important;
   overflow: hidden !important;
-  flex: none !important;
 }
 
-.slideshow-container > div,
-.slideshow-container > div:not(.image-missing-note) {
-  position: static !important;
-  inset: auto !important;
+#mainPortfolioContent .slideshow-container > div:not(.image-missing-note) {
+  position: absolute !important;
+  inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
   margin: 0 !important;
-  display: none;
+  display: none !important;
 }
 
-.slideshow-container > div:first-of-type,
-.slideshow-container > div:not(.image-missing-note):first-of-type {
-  display: block;
+#mainPortfolioContent .slideshow-container > div:not(.image-missing-note):first-of-type {
+  display: block !important;
 }
 
-.slideshow-container.is-ready > div,
-.slideshow-container.is-ready > div:not(.image-missing-note) {
-  display: none;
+#mainPortfolioContent .slideshow-container.is-ready > div:not(.image-missing-note) {
+  display: none !important;
 }
 
-.slideshow-container.is-ready > div.is-current-slide,
-.slideshow-container.is-ready > div.is-current-slide:not(.image-missing-note) {
-  display: block;
+#mainPortfolioContent .slideshow-container.is-ready > div.is-current-slide:not(.image-missing-note) {
+  display: block !important;
 }
 
-.slideshow-container img,
-.slideshow-container video,
-.slideshow-container iframe,
-div.gallery img,
-div.gallery video,
-div.gallery iframe {
+#mainPortfolioContent .slideshow-container img,
+#mainPortfolioContent .slideshow-container video,
+#mainPortfolioContent .slideshow-container iframe {
   display: block !important;
   width: 100% !important;
   height: 100% !important;
@@ -746,51 +771,64 @@ div.gallery iframe {
   border: 0 !important;
 }
 
-div.desc {
+#mainPortfolioContent div.desc {
+  flex: 0 0 auto !important;
   position: relative !important;
   display: block !important;
   height: auto !important;
-  max-height: 10.5rem;
-  overflow-y: auto;
+  max-height: 10.5rem !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
 }
 
-.prev,
-.next,
-.slide-counter {
+#mainPortfolioContent div.gallery:hover div.desc,
+#mainPortfolioContent div.desc:focus-within {
+  max-height: 17rem !important;
+}
+
+#mainPortfolioContent .prev,
+#mainPortfolioContent .next,
+#mainPortfolioContent .slide-counter {
   position: absolute !important;
 }
 
-.image-missing-note {
-  position: static !important;
+#mainPortfolioContent .image-missing-note {
+  position: absolute !important;
+  inset: 1rem !important;
   display: flex !important;
-  height: 100% !important;
   min-height: 0 !important;
+  height: auto !important;
   margin: 0 !important;
 }
 
 @media screen and (max-width: 980px) {
   body.showing-portfolio {
-    overflow: auto;
+    overflow: auto !important;
   }
 
   #mainPortfolioContent {
-    position: relative;
-    left: 0;
-    width: 100%;
-    height: auto;
-    min-height: 100vh;
-    padding: 1rem;
-    overflow: visible;
+    position: relative !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 100vh !important;
+    padding: 1rem !important;
+    overflow: visible !important;
+  }
+
+  #mainPortfolioContent div.gallery {
+    flex-basis: 100% !important;
+    min-width: 0 !important;
   }
 }
 
 @media screen and (max-width: 560px) {
-  .slideshow-container {
-    height: clamp(11rem, 62vw, 17rem) !important;
-    min-height: 11rem !important;
+  #mainPortfolioContent .slideshow-container {
+    height: clamp(11.5rem, 62vw, 17rem) !important;
+    min-height: 11.5rem !important;
   }
 
-  div.gallery > p:first-child {
-    min-height: auto;
+  #mainPortfolioContent div.gallery > p:first-child {
+    min-height: auto !important;
   }
 }
