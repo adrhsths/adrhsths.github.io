@@ -218,6 +218,32 @@
 
 
 
+		<div class="gallery FrontEndItem">
+			<p>DEF Furniture — Live 3D Product Designer for Custom Furniture</p>
+		
+			<div class="slideshow-container">
+				<div class="mySlides37" style="display: block;">
+					<img src="img/def_furniture_0.jpg" style="width:100%" alt="DEF Furniture online 3D product designer">
+				</div>
+		
+				<div class="mySlides37" style="display: none;">
+					<img src="img/def_furniture_1.jpg" style="width:100%" alt="DEF Furniture configurator interface">
+				</div>
+		
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
+			</div>
+		
+			<div class="desc">
+				<a href="https://deffurniture.com" target="_blank"><i>deffurniture.com</i></a>
+				<br><br>
+		
+				Live customer-facing 3D product designer created for a made-to-measure furniture company website. The configurator helps customers build custom storage furniture in the browser by changing dimensions, layout options, finishes, doors, drawers, and other product details.
+				<br><br>
+		
+				This project is a dedicated real-business implementation, focused on clear customer interaction, visual product preview, responsive interface behavior, and integration into the company’s online sales process.
+			</div>
+		</div>
 
 		<div class="gallery FrontEndItem">
 			<p>Arizona Barns Builder™ - core JS logic</p>
@@ -394,7 +420,34 @@
 		</div>
 
 
+		<div class="gallery FrontEndItem">
+			<p>LUNF.IO — Embeddable 3D Furniture Configurator Platform</p>
+		
+			<div class="slideshow-container">
+				<div class="mySlides36" style="display: block;">
+					<img src="img/lunfio_0.jpg" style="width:100%" alt="LUNF.IO 3D furniture configurator">
+				</div>
+		
+				<div class="mySlides36" style="display: none;">
+					<img src="img/lunfio_1.jpg" style="width:100%" alt="LUNF.IO configurator setup interface">
+				</div>
+		
+				<button type="button" class="prev" aria-label="Previous slide">❮</button>
+				<button type="button" class="next" aria-label="Next slide">❯</button>
+			</div>
+		
+			<div class="desc">
+				<a href="https://lunf.io/" target="_blank"><i>LUNF.IO</i></a>
+				<br><br>
+		
+				Browser-based 3D furniture configurator platform for wardrobe, closet, and storage companies. The system allows furniture businesses to present configurable products directly on their websites, with real-time visual changes, material options, product rules, and customer request flow.
+				<br><br>
+		
+				My work included front-end development, WebGL/three.js implementation, configurator logic, UI structure, responsive behavior, 3D asset preparation, and practical product flow for furniture sales.
+			</div>
+		</div>
 
+		
 		<div class="gallery BlenderItem">
 			<p>VR Room Demo (WebGL)</p>
 			<div class="slideshow-container">
@@ -1929,8 +1982,8 @@
       if (portfolio) portfolio.style.display = 'none';
       webItems.concat(graphicItems).forEach(function (item) { item.style.display = ''; });
       setActive('about');
-      document.body.classList.remove('showing-portfolio');
-      document.body.classList.add('showing-bio');
+      document.body.classList.remove('showing-portfolio', 'portfolio-filter-all', 'portfolio-filter-webgl', 'portfolio-filter-graphics');
+	  document.body.classList.add('showing-bio');
     }
 
     function showPortfolio(filter) {
@@ -1945,8 +1998,8 @@
       });
 
       setActive(filter === 'webgl' ? 'webgl' : filter === 'graphics' ? 'graphics' : 'portfolio');
-      document.body.classList.remove('showing-bio');
-      document.body.classList.add('showing-portfolio');
+      document.body.classList.remove('showing-bio', 'portfolio-filter-all', 'portfolio-filter-webgl', 'portfolio-filter-graphics');
+	  document.body.classList.add('showing-portfolio', 'portfolio-filter-' + (filter || 'all'));
     }
 
     function route(hash) {
