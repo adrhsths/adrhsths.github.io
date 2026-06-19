@@ -820,6 +820,17 @@ body.showing-portfolio #mainPortfolioContent .gallery {
     flex-basis: 100% !important;
     min-width: 0 !important;
   }
+
+  body.portfolio-filter-webgl #mainPortfolioContent .BlenderItem,
+  body.portfolio-filter-graphics #mainPortfolioContent .FrontEndItem {
+    display: none !important;
+  }
+  
+  body.portfolio-filter-webgl #mainPortfolioContent .FrontEndItem,
+  body.portfolio-filter-graphics #mainPortfolioContent .BlenderItem,
+  body.portfolio-filter-all #mainPortfolioContent .gallery {
+    display: flex !important;
+  }
 }
 
 @media screen and (max-width: 560px) {
@@ -831,4 +842,17 @@ body.showing-portfolio #mainPortfolioContent .gallery {
   #mainPortfolioContent div.gallery > p:first-child {
     min-height: auto !important;
   }
+
+  body.portfolio-filter-webgl #mainPortfolioContent .BlenderItem,
+  body.portfolio-filter-graphics #mainPortfolioContent .FrontEndItem {
+    display: none !important;
+  }
+  
+  body.portfolio-filter-webgl #mainPortfolioContent .FrontEndItem,
+  body.portfolio-filter-graphics #mainPortfolioContent .BlenderItem,
+  body.portfolio-filter-all #mainPortfolioContent .gallery {
+    display: flex !important;
+  }
 }
+
+
