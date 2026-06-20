@@ -597,9 +597,12 @@ button.next:hover {
   font-size: 0.85rem;
 }
 
+/* ==========================================================
+   Portfolio layout + filter fix v8
+   No duplicated page layers. No :target layout rules.
+   JavaScript controls routing with body classes only.
+   ========================================================== */
 
-/* GitHub Pages fallback routing. These rules make #portfolio, #webgl and #graphics
-   work even before JavaScript starts, without stacking resume and portfolio. */
 .route-anchor {
   position: fixed;
   left: -9999px;
@@ -609,61 +612,21 @@ button.next:hover {
   overflow: hidden;
 }
 
-#portfolio:target ~ #mainBioContent,
-#webgl:target ~ #mainBioContent,
-#graphics:target ~ #mainBioContent {
-  display: none;
+body.showing-bio #mainBioContent {
+  display: flex !important;
 }
 
-#portfolio:target ~ #mainPortfolioContent,
-#webgl:target ~ #mainPortfolioContent,
-#graphics:target ~ #mainPortfolioContent {
-  display: grid;
-}
-
-#about:target ~ #mainBioContent {
-  display: flex;
-}
-
-#about:target ~ #mainPortfolioContent {
-  display: none;
-}
-
-#webgl:target ~ #mainPortfolioContent .BlenderItem,
-#graphics:target ~ #mainPortfolioContent .FrontEndItem {
+body.showing-bio #mainPortfolioContent {
   display: none !important;
 }
 
-#webgl:target ~ #mainPortfolioContent .FrontEndItem,
-#graphics:target ~ #mainPortfolioContent .BlenderItem,
-#portfolio:target ~ #mainPortfolioContent .FrontEndItem,
-#portfolio:target ~ #mainPortfolioContent .BlenderItem {
-  display: block;
+body.showing-portfolio #mainBioContent {
+  display: none !important;
 }
 
-/* Slider fallback. GitHub/browser cache or JS failure must not show every slide stacked. */
-.slideshow-container > div {
-  display: none;
-}
-
-.slideshow-container > div:first-of-type {
-  display: block;
-}
-
-.slideshow-container.is-ready > div {
-  display: none;
-}
-
-.slideshow-container.is-ready > div.is-current-slide {
-  display: block;
-}
-
-/* ==========================================================
-   Portfolio layout + filter fix v7
-   Normal card size, stable slider height, category filter fixed.
-   ========================================================== */
-
-#mainPortfolioContent {
+body.showing-portfolio #mainPortfolioContent {
+  display: flex !important;
+  flex-wrap: wrap !important;
   align-content: flex-start !important;
   align-items: flex-start !important;
   gap: 1.25rem !important;
@@ -672,33 +635,14 @@ button.next:hover {
   padding-bottom: 4rem !important;
 }
 
-body.showing-portfolio #mainPortfolioContent,
-#portfolio:target ~ #mainPortfolioContent,
-#webgl:target ~ #mainPortfolioContent,
-#graphics:target ~ #mainPortfolioContent {
-  display: flex !important;
-  flex-wrap: wrap !important;
-}
-
-body.showing-bio #mainPortfolioContent,
-#about:target ~ #mainPortfolioContent {
-  display: none !important;
-}
-
-body.showing-portfolio #mainBioContent,
-#portfolio:target ~ #mainBioContent,
-#webgl:target ~ #mainBioContent,
-#graphics:target ~ #mainBioContent {
-  display: none !important;
-}
-
 #mainPortfolioContent .portfolio-intro {
   flex: 0 0 100% !important;
   width: 100% !important;
   max-width: none !important;
 }
 
-#mainPortfolioContent div.gallery {
+body.showing-portfolio #mainPortfolioContent div.gallery {
+  display: flex !important;
   flex: 1 1 21rem !important;
   min-width: min(100%, 21rem) !important;
   max-width: none !important;
@@ -711,22 +655,8 @@ body.showing-portfolio #mainBioContent,
   overflow: hidden !important;
 }
 
-body.showing-portfolio #mainPortfolioContent div.gallery:not([hidden]),
-#portfolio:target ~ #mainPortfolioContent div.gallery,
-#webgl:target ~ #mainPortfolioContent .FrontEndItem,
-#graphics:target ~ #mainPortfolioContent .BlenderItem {
-  display: flex !important;
-}
-
 body.portfolio-filter-webgl #mainPortfolioContent .BlenderItem,
-body.portfolio-filter-graphics #mainPortfolioContent .FrontEndItem,
-#webgl:target ~ #mainPortfolioContent .BlenderItem,
-#graphics:target ~ #mainPortfolioContent .FrontEndItem,
-#mainPortfolioContent div.gallery[hidden],
-body.showing-portfolio #mainPortfolioContent div.gallery[hidden],
-#portfolio:target ~ #mainPortfolioContent div.gallery[hidden],
-#webgl:target ~ #mainPortfolioContent div.gallery[hidden],
-#graphics:target ~ #mainPortfolioContent div.gallery[hidden] {
+body.portfolio-filter-graphics #mainPortfolioContent .FrontEndItem {
   display: none !important;
 }
 
@@ -811,34 +741,31 @@ body.showing-portfolio #mainPortfolioContent div.gallery[hidden],
 
 .project-placeholder-slide {
   background:
-    radial-gradient(circle at 30% 20%, rgba(124, 140, 255, 0.20), transparent 18rem),
-    radial-gradient(circle at 80% 80%, rgba(240, 169, 77, 0.14), transparent 16rem),
+    radial-gradient(circle at 50% 25%, rgba(255,255,255,0.08), transparent 45%),
+    linear-gradient(135deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015)),
     #080b10;
 }
 
 .project-placeholder-content {
+  display: flex;
   width: 100%;
   height: 100%;
-  display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  color: var(--text);
-  font-size: clamp(1.2rem, 2.2vw, 2rem);
-  font-weight: 800;
-  letter-spacing: -0.04em;
   text-align: center;
-  padding: 1rem;
+  padding: 1.5rem;
+  color: var(--text);
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  font-weight: 800;
+  line-height: 1.2;
 }
 
 .project-placeholder-content span {
   display: block;
-  margin-top: 0.5rem;
+  margin-top: 0.4rem;
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: 0.9rem;
   font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
 }
 
 @media screen and (max-width: 980px) {
@@ -846,11 +773,8 @@ body.showing-portfolio #mainPortfolioContent div.gallery[hidden],
     overflow: auto !important;
   }
 
-  body.showing-portfolio {
-    overflow: auto !important;
-  }
-
-  #mainPortfolioContent {
+  #mainPortfolioContent,
+  #mainBioContent {
     position: relative !important;
     left: 0 !important;
     width: 100% !important;
@@ -860,7 +784,7 @@ body.showing-portfolio #mainPortfolioContent div.gallery[hidden],
     overflow: visible !important;
   }
 
-  #mainPortfolioContent div.gallery {
+  body.showing-portfolio #mainPortfolioContent div.gallery {
     flex-basis: 100% !important;
     min-width: 0 !important;
   }
