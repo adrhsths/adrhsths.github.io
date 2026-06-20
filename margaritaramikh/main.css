@@ -658,19 +658,11 @@ button.next:hover {
   display: block;
 }
 
-
 /* ==========================================================
-   Portfolio layout + slider/filter fix v6
-   Replace the old v3/v4 patch with this section.
-
-   Fixes:
-   1) Cards do not collapse or stack in Safari.
-   2) Sliders keep a real height at normal zoom.
-   3) All Works / Front-End / 3D filters work by body class.
-   4) LUNF.IO and DEF Furniture can be shown as full-width top cards.
+   Portfolio layout + filter fix v7
+   Normal card size, stable slider height, category filter fixed.
    ========================================================== */
 
-/* Main portfolio container: flex is safer than CSS grid here. */
 #mainPortfolioContent {
   align-content: flex-start !important;
   align-items: flex-start !important;
@@ -680,31 +672,7 @@ button.next:hover {
   padding-bottom: 4rem !important;
 }
 
-/* Route visibility controlled by JS body classes. */
-body.showing-bio #mainBioContent {
-  display: flex !important;
-}
-
-body.showing-bio #mainPortfolioContent {
-  display: none !important;
-}
-
-body.showing-portfolio #mainBioContent {
-  display: none !important;
-}
-
-body.showing-portfolio #mainPortfolioContent {
-  display: flex !important;
-  flex-wrap: wrap !important;
-}
-
-/* Fallback routes for direct links before JavaScript finishes. */
-#portfolio:target ~ #mainBioContent,
-#webgl:target ~ #mainBioContent,
-#graphics:target ~ #mainBioContent {
-  display: none !important;
-}
-
+body.showing-portfolio #mainPortfolioContent,
 #portfolio:target ~ #mainPortfolioContent,
 #webgl:target ~ #mainPortfolioContent,
 #graphics:target ~ #mainPortfolioContent {
@@ -712,58 +680,24 @@ body.showing-portfolio #mainPortfolioContent {
   flex-wrap: wrap !important;
 }
 
-#about:target ~ #mainBioContent {
-  display: flex !important;
-}
-
+body.showing-bio #mainPortfolioContent,
 #about:target ~ #mainPortfolioContent {
   display: none !important;
 }
 
-/* Intro is always full width. */
+body.showing-portfolio #mainBioContent,
+#portfolio:target ~ #mainBioContent,
+#webgl:target ~ #mainBioContent,
+#graphics:target ~ #mainBioContent {
+  display: none !important;
+}
+
 #mainPortfolioContent .portfolio-intro {
   flex: 0 0 100% !important;
   width: 100% !important;
   max-width: none !important;
 }
 
-/* Direct hash fallback without JS. */
-#portfolio:target ~ #mainPortfolioContent div.gallery {
-  display: flex !important;
-}
-
-#webgl:target ~ #mainPortfolioContent div.gallery.BlenderItem,
-#graphics:target ~ #mainPortfolioContent div.gallery.FrontEndItem {
-  display: none !important;
-}
-
-#webgl:target ~ #mainPortfolioContent div.gallery.FrontEndItem,
-#graphics:target ~ #mainPortfolioContent div.gallery.BlenderItem {
-  display: flex !important;
-}
-
-/* JS-controlled filters. These are placed after hash fallback and win. */
-html body.showing-portfolio.portfolio-filter-all #mainPortfolioContent div.gallery {
-  display: flex !important;
-}
-
-html body.showing-portfolio.portfolio-filter-webgl #mainPortfolioContent div.gallery {
-  display: none !important;
-}
-
-html body.showing-portfolio.portfolio-filter-webgl #mainPortfolioContent div.gallery.FrontEndItem {
-  display: flex !important;
-}
-
-html body.showing-portfolio.portfolio-filter-graphics #mainPortfolioContent div.gallery {
-  display: none !important;
-}
-
-html body.showing-portfolio.portfolio-filter-graphics #mainPortfolioContent div.gallery.BlenderItem {
-  display: flex !important;
-}
-
-/* Normal card layout. */
 #mainPortfolioContent div.gallery {
   flex: 1 1 21rem !important;
   min-width: min(100%, 21rem) !important;
@@ -777,11 +711,23 @@ html body.showing-portfolio.portfolio-filter-graphics #mainPortfolioContent div.
   overflow: hidden !important;
 }
 
-/* Featured top projects stay on separate rows, not side-by-side. */
-#mainPortfolioContent div.gallery.featured-work {
-  flex: 0 0 100% !important;
-  width: 100% !important;
-  max-width: none !important;
+body.showing-portfolio #mainPortfolioContent div.gallery:not([hidden]),
+#portfolio:target ~ #mainPortfolioContent div.gallery,
+#webgl:target ~ #mainPortfolioContent .FrontEndItem,
+#graphics:target ~ #mainPortfolioContent .BlenderItem {
+  display: flex !important;
+}
+
+body.portfolio-filter-webgl #mainPortfolioContent .BlenderItem,
+body.portfolio-filter-graphics #mainPortfolioContent .FrontEndItem,
+#webgl:target ~ #mainPortfolioContent .BlenderItem,
+#graphics:target ~ #mainPortfolioContent .FrontEndItem,
+#mainPortfolioContent div.gallery[hidden],
+body.showing-portfolio #mainPortfolioContent div.gallery[hidden],
+#portfolio:target ~ #mainPortfolioContent div.gallery[hidden],
+#webgl:target ~ #mainPortfolioContent div.gallery[hidden],
+#graphics:target ~ #mainPortfolioContent div.gallery[hidden] {
+  display: none !important;
 }
 
 #mainPortfolioContent div.gallery > p:first-child {
@@ -791,7 +737,6 @@ html body.showing-portfolio.portfolio-filter-graphics #mainPortfolioContent div.
   min-height: 4.3rem !important;
 }
 
-/* Real slider height: prevents collapsed image/iframe strips. */
 #mainPortfolioContent .slideshow-container {
   flex: 0 0 auto !important;
   position: relative !important;
@@ -804,12 +749,6 @@ html body.showing-portfolio.portfolio-filter-graphics #mainPortfolioContent div.
   overflow: hidden !important;
 }
 
-#mainPortfolioContent .featured-work .slideshow-container {
-  height: clamp(15rem, 24vw, 24rem) !important;
-  max-height: 24rem !important;
-}
-
-/* Slides sit inside the fixed-height slider. */
 #mainPortfolioContent .slideshow-container > div:not(.image-missing-note):not(.slide-counter) {
   position: absolute !important;
   inset: 0 !important;
@@ -819,21 +758,13 @@ html body.showing-portfolio.portfolio-filter-graphics #mainPortfolioContent div.
   display: none !important;
 }
 
-#mainPortfolioContent .slideshow-container > div:not(.image-missing-note):not(.slide-counter):first-of-type {
-  display: block !important;
-}
-
-#mainPortfolioContent .slideshow-container.is-ready > div:not(.image-missing-note):not(.slide-counter) {
-  display: none !important;
-}
-
+#mainPortfolioContent .slideshow-container > div:not(.image-missing-note):not(.slide-counter):first-of-type,
 #mainPortfolioContent .slideshow-container.is-ready > div.is-current-slide:not(.image-missing-note):not(.slide-counter) {
   display: block !important;
 }
 
-#mainPortfolioContent .slideshow-container.is-ready > div.project-placeholder.is-current-slide,
-#mainPortfolioContent .slideshow-container > div.project-placeholder:first-of-type {
-  display: flex !important;
+#mainPortfolioContent .slideshow-container.is-ready > div:not(.image-missing-note):not(.slide-counter):not(.is-current-slide) {
+  display: none !important;
 }
 
 #mainPortfolioContent .slideshow-container img,
@@ -848,47 +779,6 @@ html body.showing-portfolio.portfolio-filter-graphics #mainPortfolioContent div.
   border: 0 !important;
 }
 
-.project-placeholder {
-  align-items: center !important;
-  justify-content: center !important;
-  padding: clamp(1rem, 3vw, 2.25rem) !important;
-  text-align: left !important;
-  background:
-    radial-gradient(circle at 18% 20%, rgba(124,140,255,0.22), transparent 22rem),
-    radial-gradient(circle at 82% 28%, rgba(240,169,77,0.16), transparent 22rem),
-    linear-gradient(135deg, rgba(255,255,255,0.075), rgba(255,255,255,0.025)),
-    #080b10 !important;
-}
-
-.project-placeholder > div {
-  width: min(100%, 48rem);
-}
-
-.project-placeholder strong {
-  display: block;
-  color: var(--text);
-  font-size: clamp(1.45rem, 4vw, 3rem);
-  line-height: 1;
-  letter-spacing: -0.055em;
-}
-
-.project-placeholder span {
-  display: block;
-  max-width: 42rem;
-  margin-top: 0.8rem;
-  color: #d6dde9;
-  font-size: clamp(1rem, 1.8vw, 1.24rem);
-  line-height: 1.5;
-}
-
-.project-placeholder small {
-  display: block;
-  margin-top: 1rem;
-  color: var(--muted-2);
-  font-size: 0.82rem;
-}
-
-/* Description stays inside the card. */
 #mainPortfolioContent div.desc {
   flex: 0 0 auto !important;
   position: relative !important;
@@ -897,10 +787,6 @@ html body.showing-portfolio.portfolio-filter-graphics #mainPortfolioContent div.
   max-height: 10.5rem !important;
   overflow-y: auto !important;
   overflow-x: hidden !important;
-}
-
-#mainPortfolioContent .featured-work div.desc {
-  max-height: 9rem !important;
 }
 
 #mainPortfolioContent div.gallery:hover div.desc,
@@ -923,8 +809,44 @@ html body.showing-portfolio.portfolio-filter-graphics #mainPortfolioContent div.
   margin: 0 !important;
 }
 
+.project-placeholder-slide {
+  background:
+    radial-gradient(circle at 30% 20%, rgba(124, 140, 255, 0.20), transparent 18rem),
+    radial-gradient(circle at 80% 80%, rgba(240, 169, 77, 0.14), transparent 16rem),
+    #080b10;
+}
+
+.project-placeholder-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: var(--text);
+  font-size: clamp(1.2rem, 2.2vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  text-align: center;
+  padding: 1rem;
+}
+
+.project-placeholder-content span {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
 @media screen and (max-width: 980px) {
   body {
+    overflow: auto !important;
+  }
+
+  body.showing-portfolio {
     overflow: auto !important;
   }
 
@@ -938,16 +860,14 @@ html body.showing-portfolio.portfolio-filter-graphics #mainPortfolioContent div.
     overflow: visible !important;
   }
 
-  #mainPortfolioContent div.gallery,
-  #mainPortfolioContent div.gallery.featured-work {
+  #mainPortfolioContent div.gallery {
     flex-basis: 100% !important;
     min-width: 0 !important;
   }
 }
 
 @media screen and (max-width: 560px) {
-  #mainPortfolioContent .slideshow-container,
-  #mainPortfolioContent .featured-work .slideshow-container {
+  #mainPortfolioContent .slideshow-container {
     height: clamp(11.5rem, 62vw, 17rem) !important;
     min-height: 11.5rem !important;
   }
