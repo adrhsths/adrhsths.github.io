@@ -107,8 +107,6 @@
   function setupNavigation() {
     var bio = document.getElementById('mainBioContent');
     var portfolio = document.getElementById('mainPortfolioContent');
-    var webItems = toArray(document.querySelectorAll('.FrontEndItem'));
-    var graphicItems = toArray(document.querySelectorAll('.BlenderItem'));
 
     var nav = {
       about: document.getElementById('bioLink'),
@@ -117,6 +115,14 @@
       graphics: document.getElementById('grafics3dLink')
     };
 
+    var routeClasses = [
+      'showing-bio',
+      'showing-portfolio',
+      'portfolio-filter-all',
+      'portfolio-filter-webgl',
+      'portfolio-filter-graphics'
+    ];
+
     function setActive(name) {
       Object.keys(nav).forEach(function (key) {
         if (!nav[key]) return;
@@ -124,29 +130,29 @@
       });
     }
 
+    function clearRouteClasses() {
+      routeClasses.forEach(function (name) {
+        document.body.classList.remove(name);
+      });
+    }
+
     function showBio() {
-      if (bio) bio.style.display = 'flex';
-      if (portfolio) portfolio.style.display = 'none';
-      webItems.concat(graphicItems).forEach(function (item) { item.style.display = ''; });
+      clearRouteClasses();
+      if (bio) bio.style.display = '';
+      if (portfolio) portfolio.style.display = '';
       setActive('about');
-      document.body.classList.remove('showing-portfolio');
       document.body.classList.add('showing-bio');
     }
 
     function showPortfolio(filter) {
-      if (bio) bio.style.display = 'none';
-      if (portfolio) portfolio.style.display = 'grid';
+      var activeFilter = filter === 'webgl' || filter === 'graphics' ? filter : 'all';
 
-      webItems.forEach(function (item) {
-        item.style.display = filter === 'graphics' ? 'none' : 'block';
-      });
-      graphicItems.forEach(function (item) {
-        item.style.display = filter === 'webgl' ? 'none' : 'block';
-      });
+      clearRouteClasses();
+      if (bio) bio.style.display = '';
+      if (portfolio) portfolio.style.display = '';
 
-      setActive(filter === 'webgl' ? 'webgl' : filter === 'graphics' ? 'graphics' : 'portfolio');
-      document.body.classList.remove('showing-bio');
-      document.body.classList.add('showing-portfolio');
+      setActive(activeFilter === 'webgl' ? 'webgl' : activeFilter === 'graphics' ? 'graphics' : 'portfolio');
+      document.body.classList.add('showing-portfolio', 'portfolio-filter-' + activeFilter);
     }
 
     function route(hash) {
@@ -177,6 +183,7 @@
     });
 
     window.addEventListener('hashchange', function () { route(); });
+    window.addEventListener('popstate', function () { route(); });
     route();
   }
 
