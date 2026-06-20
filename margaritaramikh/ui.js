@@ -1,8 +1,8 @@
 (function () {
   'use strict';
 
-  if (window.__portfolioStaticUiV10) return;
-  window.__portfolioStaticUiV10 = true;
+  if (window.__portfolioStaticUiV9) return;
+  window.__portfolioStaticUiV9 = true;
 
   function ready(fn) {
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn);
@@ -31,8 +31,7 @@
       if (!child || child.tagName !== 'DIV') return false;
       if (child.classList && (child.classList.contains('image-missing-note') || child.classList.contains('slide-counter'))) return false;
       if (/\bmySlides\d+\b/.test(child.className || '')) return true;
-      if (child.classList && child.classList.contains('project-placeholder-slide')) return true;
-      if (child.querySelector && child.querySelector('img, video, iframe, .project-placeholder-content')) return true;
+      if (child.querySelector && child.querySelector('img, video, iframe')) return true;
       return false;
     });
   }
@@ -105,22 +104,6 @@
     });
   }
 
-  function setBodyRoute(routeName) {
-    document.body.classList.remove(
-      'showing-bio',
-      'showing-portfolio',
-      'portfolio-filter-all',
-      'portfolio-filter-webgl',
-      'portfolio-filter-graphics'
-    );
-
-    if (routeName === 'about') {
-      document.body.classList.add('showing-bio');
-    } else {
-      document.body.classList.add('showing-portfolio', 'portfolio-filter-' + routeName);
-    }
-  }
-
   function setupNavigation() {
     var bio = document.getElementById('mainBioContent');
     var portfolio = document.getElementById('mainPortfolioContent');
@@ -141,37 +124,29 @@
       });
     }
 
-    function clearItemState(item) {
-      item.hidden = false;
-      item.style.removeProperty('display');
-    }
-
     function showBio() {
       if (bio) bio.style.display = 'flex';
       if (portfolio) portfolio.style.display = 'none';
-      webItems.concat(graphicItems).forEach(clearItemState);
+      webItems.concat(graphicItems).forEach(function (item) { item.style.display = ''; });
       setActive('about');
-      setBodyRoute('about');
+      document.body.classList.remove('showing-portfolio');
+      document.body.classList.add('showing-bio');
     }
 
     function showPortfolio(filter) {
-      filter = filter || 'all';
-
       if (bio) bio.style.display = 'none';
-      if (portfolio) portfolio.style.removeProperty('display');
+      if (portfolio) portfolio.style.display = 'grid';
 
       webItems.forEach(function (item) {
-        item.style.removeProperty('display');
-        item.hidden = filter === 'graphics';
+        item.style.display = filter === 'graphics' ? 'none' : 'block';
       });
-
       graphicItems.forEach(function (item) {
-        item.style.removeProperty('display');
-        item.hidden = filter === 'webgl';
+        item.style.display = filter === 'webgl' ? 'none' : 'block';
       });
 
       setActive(filter === 'webgl' ? 'webgl' : filter === 'graphics' ? 'graphics' : 'portfolio');
-      setBodyRoute(filter);
+      document.body.classList.remove('showing-bio');
+      document.body.classList.add('showing-portfolio');
     }
 
     function route(hash) {
