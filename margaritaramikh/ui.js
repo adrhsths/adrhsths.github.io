@@ -1,8 +1,8 @@
 (function () {
   'use strict';
 
-  if (window.__portfolioStaticUiV9) return;
-  window.__portfolioStaticUiV9 = true;
+  if (window.__portfolioStaticUiV10) return;
+  window.__portfolioStaticUiV10 = true;
 
   function ready(fn) {
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn);
@@ -31,7 +31,8 @@
       if (!child || child.tagName !== 'DIV') return false;
       if (child.classList && (child.classList.contains('image-missing-note') || child.classList.contains('slide-counter'))) return false;
       if (/\bmySlides\d+\b/.test(child.className || '')) return true;
-      if (child.querySelector && child.querySelector('img, video, iframe')) return true;
+      if (child.classList && child.classList.contains('project-placeholder-slide')) return true;
+      if (child.querySelector && child.querySelector('img, video, iframe, .project-placeholder-content')) return true;
       return false;
     });
   }
@@ -104,9 +105,27 @@
     });
   }
 
+  function setBodyRoute(routeName) {
+    document.body.classList.remove(
+      'showing-bio',
+      'showing-portfolio',
+      'portfolio-filter-all',
+      'portfolio-filter-webgl',
+      'portfolio-filter-graphics'
+    );
+
+    if (routeName === 'about') {
+      document.body.classList.add('showing-bio');
+    } else {
+      document.body.classList.add('showing-portfolio', 'portfolio-filter-' + routeName);
+    }
+  }
+
   function setupNavigation() {
     var bio = document.getElementById('mainBioContent');
     var portfolio = document.getElementById('mainPortfolioContent');
+    var webItems = toArray(document.querySelectorAll('.FrontEndItem'));
+    var graphicItems = toArray(document.querySelectorAll('.BlenderItem'));
 
     var nav = {
       about: document.getElementById('bioLink'),
@@ -115,14 +134,6 @@
       graphics: document.getElementById('grafics3dLink')
     };
 
-    var routeClasses = [
-      'showing-bio',
-      'showing-portfolio',
-      'portfolio-filter-all',
-      'portfolio-filter-webgl',
-      'portfolio-filter-graphics'
-    ];
-
     function setActive(name) {
       Object.keys(nav).forEach(function (key) {
         if (!nav[key]) return;
@@ -130,29 +141,37 @@
       });
     }
 
-    function clearRouteClasses() {
-      routeClasses.forEach(function (name) {
-        document.body.classList.remove(name);
-      });
+    function clearItemState(item) {
+      item.hidden = false;
+      item.style.removeProperty('display');
     }
 
     function showBio() {
-      clearRouteClasses();
-      if (bio) bio.style.display = '';
-      if (portfolio) portfolio.style.display = '';
+      if (bio) bio.style.display = 'flex';
+      if (portfolio) portfolio.style.display = 'none';
+      webItems.concat(graphicItems).forEach(clearItemState);
       setActive('about');
-      document.body.classList.add('showing-bio');
+      setBodyRoute('about');
     }
 
     function showPortfolio(filter) {
-      var activeFilter = filter === 'webgl' || filter === 'graphics' ? filter : 'all';
+      filter = filter || 'all';
 
-      clearRouteClasses();
-      if (bio) bio.style.display = '';
-      if (portfolio) portfolio.style.display = '';
+      if (bio) bio.style.display = 'none';
+      if (portfolio) portfolio.style.removeProperty('display');
 
-      setActive(activeFilter === 'webgl' ? 'webgl' : activeFilter === 'graphics' ? 'graphics' : 'portfolio');
-      document.body.classList.add('showing-portfolio', 'portfolio-filter-' + activeFilter);
+      webItems.forEach(function (item) {
+        item.style.removeProperty('display');
+        item.hidden = filter === 'graphics';
+      });
+
+      graphicItems.forEach(function (item) {
+        item.style.removeProperty('display');
+        item.hidden = filter === 'webgl';
+      });
+
+      setActive(filter === 'webgl' ? 'webgl' : filter === 'graphics' ? 'graphics' : 'portfolio');
+      setBodyRoute(filter);
     }
 
     function route(hash) {
@@ -183,7 +202,6 @@
     });
 
     window.addEventListener('hashchange', function () { route(); });
-    window.addEventListener('popstate', function () { route(); });
     route();
   }
 
