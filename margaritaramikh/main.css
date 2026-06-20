@@ -800,3 +800,20 @@ body.portfolio-filter-graphics #mainPortfolioContent .FrontEndItem {
     min-height: auto !important;
   }
 }
+
+
+/* ==========================================================
+   v9 final category filter override
+   Fixes WebGL / 3D category buttons after v8 no-duplicate fix.
+   These rules are intentionally at the very bottom so they win.
+   ========================================================== */
+body.showing-portfolio.portfolio-filter-all #mainPortfolioContent div.gallery,
+body.showing-portfolio.portfolio-filter-webgl #mainPortfolioContent div.gallery.FrontEndItem,
+body.showing-portfolio.portfolio-filter-graphics #mainPortfolioContent div.gallery.BlenderItem {
+  display: flex !important;
+}
+
+body.showing-portfolio.portfolio-filter-webgl #mainPortfolioContent div.gallery.BlenderItem,
+body.showing-portfolio.portfolio-filter-graphics #mainPortfolioContent div.gallery.FrontEndItem {
+  display: none !important;
+}
