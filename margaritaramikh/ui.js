@@ -1,8 +1,8 @@
 (function () {
   'use strict';
 
-  if (window.__portfolioStaticUiV9) return;
-  window.__portfolioStaticUiV9 = true;
+  if (window.__portfolioStaticUiV11) return;
+  window.__portfolioStaticUiV11 = true;
 
   function ready(fn) {
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn);
