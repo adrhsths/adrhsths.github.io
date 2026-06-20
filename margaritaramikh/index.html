@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="description" content="Portfolio and resume for Margarita Ramikh, Blender3D generalist, WebGL developer, and computer graphics specialist.">
 	<!-- <link href="main.css" rel="stylesheet" type="text/css"> -->
-	<link rel="stylesheet" type="text/css" href="./main.css?v=20260620-filter-v5">
+	<link rel="stylesheet" type="text/css" href="./main.css?v=20260620-v6-top-projects-filter">
 </head>
 
 <!--  <style>
@@ -208,11 +208,60 @@
 				<p>Commercial WebGL, front-end, configurator, Blender3D, visualization, animation, and production graphics projects. All original project cards from the previous page are preserved below.</p>
 			</div>
 			<div class="portfolio-meta" aria-label="Project counters">
-				<span><strong>60</strong><small>project cards</small></span>
-				<span><strong>28</strong><small>WebGL / front-end</small></span>
+				<span><strong>62</strong><small>project cards</small></span>
+				<span><strong>30</strong><small>WebGL / front-end</small></span>
 				<span><strong>32</strong><small>3D / graphics</small></span>
 			</div>
 		</section>
+
+
+		<!-- LUNF.IO -->
+		<div class="gallery FrontEndItem featured-work">
+			<p>LUNF.IO — Embeddable 3D Furniture Configurator</p>
+
+			<div class="slideshow-container">
+				<div class="mySlides36 project-placeholder" style="display: block;">
+					<div>
+						<strong>LUNF.IO</strong>
+						<span>Browser-based 3D furniture configurator for wardrobe, closet, and storage companies.</span>
+						<small>Add a real screenshot later by replacing this placeholder with an image.</small>
+					</div>
+				</div>
+			</div>
+
+			<div class="desc">
+				<a href="https://lunf.io/" target="_blank"><i>LUNF.IO</i></a>
+				<br><br>
+				Embeddable browser-based 3D furniture configurator for wardrobe, closet, and storage companies. The system helps furniture businesses present configurable products directly on their websites, with real-time visual changes, material options, product rules, and customer request flow.
+				<br><br>
+				My work covered front-end development, WebGL/three.js implementation, configurator logic, UI structure, responsive behavior, 3D asset preparation, and practical product flow for furniture sales.
+			</div>
+		</div>
+
+
+		<!-- DEF FURNITURE -->
+		<div class="gallery FrontEndItem featured-work">
+			<p>DEF Furniture — Live 3D Product Designer for Custom Furniture</p>
+
+			<div class="slideshow-container">
+				<div class="mySlides37 project-placeholder" style="display: block;">
+					<div>
+						<strong>DEF Furniture</strong>
+						<span>Live customer-facing 3D product designer for made-to-measure furniture.</span>
+						<small>Add a real screenshot later by replacing this placeholder with an image.</small>
+					</div>
+				</div>
+			</div>
+
+			<div class="desc">
+				<a href="https://deffurniture.com" target="_blank"><i>deffurniture.com</i></a>
+				<br><br>
+				Live customer-facing 3D product designer created for a made-to-measure furniture company website. The configurator helps customers build custom storage furniture in the browser by changing dimensions, layout options, finishes, doors, drawers, and other product details.
+				<br><br>
+				Unlike a general platform presentation, this project is a dedicated real-business implementation focused on clear customer interaction, visual product preview, responsive interface behavior, and integration into the company’s online sales process.
+			</div>
+		</div>
+
 
 
 
@@ -1907,8 +1956,6 @@
   function setupNavigation() {
     var bio = document.getElementById('mainBioContent');
     var portfolio = document.getElementById('mainPortfolioContent');
-    var webItems = toArray(document.querySelectorAll('.FrontEndItem'));
-    var graphicItems = toArray(document.querySelectorAll('.BlenderItem'));
 
     var nav = {
       about: document.getElementById('bioLink'),
@@ -1917,6 +1964,14 @@
       graphics: document.getElementById('grafics3dLink')
     };
 
+    var routeClasses = [
+      'showing-bio',
+      'showing-portfolio',
+      'portfolio-filter-all',
+      'portfolio-filter-webgl',
+      'portfolio-filter-graphics'
+    ];
+
     function setActive(name) {
       Object.keys(nav).forEach(function (key) {
         if (!nav[key]) return;
@@ -1924,48 +1979,28 @@
       });
     }
 
-    function showBio() {
-      if (bio) bio.style.display = 'flex';
-      if (portfolio) portfolio.style.display = 'none';
-
-      webItems.concat(graphicItems).forEach(function (item) {
-        item.style.display = '';
+    function clearRouteClasses() {
+      routeClasses.forEach(function (name) {
+        document.body.classList.remove(name);
       });
+    }
 
+    function showBio() {
+      clearRouteClasses();
+      if (bio) bio.style.display = '';
+      if (portfolio) portfolio.style.display = '';
       setActive('about');
-
-      document.body.classList.remove(
-        'showing-portfolio',
-        'portfolio-filter-all',
-        'portfolio-filter-webgl',
-        'portfolio-filter-graphics'
-      );
       document.body.classList.add('showing-bio');
     }
 
     function showPortfolio(filter) {
       var activeFilter = filter === 'webgl' || filter === 'graphics' ? filter : 'all';
 
-      if (bio) bio.style.display = 'none';
-
-      /* CSS controls the portfolio layout. Do not force grid here,
-         because the fixed layout uses flex-wrap. */
+      clearRouteClasses();
+      if (bio) bio.style.display = '';
       if (portfolio) portfolio.style.display = '';
 
-      /* Clear old inline display values. Filtering is now class-based,
-         so CSS cannot be accidentally overridden by old inline states. */
-      webItems.concat(graphicItems).forEach(function (item) {
-        item.style.display = '';
-      });
-
       setActive(activeFilter === 'webgl' ? 'webgl' : activeFilter === 'graphics' ? 'graphics' : 'portfolio');
-
-      document.body.classList.remove(
-        'showing-bio',
-        'portfolio-filter-all',
-        'portfolio-filter-webgl',
-        'portfolio-filter-graphics'
-      );
       document.body.classList.add('showing-portfolio', 'portfolio-filter-' + activeFilter);
     }
 
