@@ -1,0 +1,897 @@
+:root {
+  --bg: #07090d;
+  --bg-soft: #0d1118;
+  --panel: rgba(18, 22, 31, 0.76);
+  --panel-strong: rgba(21, 26, 38, 0.96);
+  --border: rgba(255, 255, 255, 0.09);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --text: #edf1f7;
+  --muted: #a6afc1;
+  --muted-2: #727c91;
+  --accent: #f0a94d;
+  --accent-2: #7c8cff;
+  --accent-3: #5ee4b9;
+  --danger: #ef7d7d;
+  --nav-width: 17.5rem;
+  --radius: 1.25rem;
+  --shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(124, 140, 255, 0.17), transparent 30rem),
+    radial-gradient(circle at 85% 18%, rgba(240, 169, 77, 0.13), transparent 28rem),
+    linear-gradient(135deg, #050608 0%, #0b1018 42%, #07090d 100%);
+  overflow: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 4rem 4rem;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.75), transparent 80%);
+}
+
+img, video, iframe {
+  max-width: 100%;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 180ms ease, border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+a:hover {
+  color: #ffd18d;
+}
+
+p {
+  line-height: 1.65;
+}
+
+#navbar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: var(--nav-width);
+  height: 100vh;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.25rem;
+  color: var(--text);
+  background: linear-gradient(180deg, rgba(12, 15, 22, 0.92), rgba(9, 11, 17, 0.84));
+  border-right: 1px solid var(--border);
+  box-shadow: 1.5rem 0 4rem rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(18px);
+  overflow-y: auto;
+}
+
+#littleTitle p {
+  margin: 0;
+}
+
+#littleTitle a {
+  display: block;
+  color: var(--text) !important;
+  font-size: 0.96rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+}
+
+.nav-tagline {
+  margin: 1.25rem 0 1.5rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+#navbar p {
+  margin: 1.15rem 0 0.7rem;
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+#bio,
+#portfolio,
+#frontend,
+#grafics3d,
+#portfoliolink a {
+  display: inline-flex;
+  width: 100%;
+  cursor: pointer;
+  color: var(--muted) !important;
+  text-decoration: none !important;
+  padding: 0.7rem 0.85rem;
+  margin: 0.15rem 0;
+  border: 1px solid transparent;
+  border-radius: 0.85rem;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+#bio:hover,
+#portfolio:hover,
+#frontend:hover,
+#grafics3d:hover,
+#portfoliolink a:hover,
+#bio.is-active,
+#portfolio.is-active,
+#frontend.is-active,
+#grafics3d.is-active {
+  color: var(--text) !important;
+  border-color: var(--border-strong);
+  background: rgba(255, 255, 255, 0.075);
+}
+
+.icons {
+  width: 1.15rem;
+  height: 1.15rem;
+  object-fit: contain;
+  margin-right: 0.45rem;
+  vertical-align: -0.25rem;
+  opacity: 0.85;
+}
+
+footer {
+  color: var(--muted-2);
+  font-size: 0.75rem;
+  line-height: 1.45;
+  padding-bottom: 1rem;
+}
+
+#mainPortfolioContent,
+#mainBioContent {
+  position: fixed;
+  top: 0;
+  left: var(--nav-width);
+  width: calc(100vw - var(--nav-width));
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 2rem;
+}
+
+#mainPortfolioContent {
+  display: none;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr));
+  align-content: start;
+  gap: 1.25rem;
+}
+
+.portfolio-intro {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1.25rem;
+  align-items: end;
+  padding: clamp(1.25rem, 3vw, 2.2rem);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 0.4rem);
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.09), rgba(255,255,255,0.035)),
+    radial-gradient(circle at top right, rgba(124,140,255,0.22), transparent 24rem),
+    var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.portfolio-intro .eyebrow,
+.bio-kicker {
+  margin: 0 0 0.65rem;
+  color: var(--accent-3);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.portfolio-intro h1,
+#BioText h1 {
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(2rem, 5vw, 4.4rem);
+  line-height: 0.95;
+  letter-spacing: -0.075em;
+}
+
+.portfolio-intro p {
+  max-width: 58rem;
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.portfolio-meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(6rem, 1fr));
+  gap: 0.7rem;
+  min-width: min(26rem, 100%);
+}
+
+.portfolio-meta span,
+.bio-stats span {
+  display: block;
+  padding: 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: rgba(5, 7, 11, 0.44);
+}
+
+.portfolio-meta strong,
+.bio-stats strong {
+  display: block;
+  color: var(--text);
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.portfolio-meta small,
+.bio-stats small {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--muted-2);
+  font-size: 0.73rem;
+  line-height: 1.35;
+}
+
+div.gallery {
+  position: relative;
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03)), var(--panel-strong);
+  box-shadow: 0 1rem 2.4rem rgba(0, 0, 0, 0.23);
+  transform: translateY(0);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+div.gallery:hover {
+  transform: translateY(-0.22rem);
+  border-color: rgba(255, 255, 255, 0.21);
+  box-shadow: 0 1.35rem 3.2rem rgba(0, 0, 0, 0.35);
+}
+
+div.gallery > p:first-child {
+  min-height: 4.3rem;
+  margin: 0;
+  padding: 1rem 1rem 0.8rem;
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.slideshow-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin: 0;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(255,255,255,0.08), transparent 50%),
+    #080b10;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.slideshow-container > div {
+  width: 100%;
+  height: 100%;
+}
+
+div.gallery img,
+div.gallery video,
+div.gallery iframe {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  object-fit: contain;
+  border: 0;
+}
+
+div.desc {
+  height: auto;
+  max-height: 10.5rem;
+  margin: 0;
+  padding: 1rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-weight: 400;
+  line-height: 1.58;
+  scrollbar-width: thin;
+}
+
+div.gallery:hover div.desc,
+div.desc:focus-within {
+  max-height: 17rem;
+}
+
+div.desc b,
+div.desc strong {
+  color: #ffffff;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 2.45rem;
+  height: 2.45rem;
+  margin-top: -1.225rem;
+  padding: 0;
+  cursor: pointer;
+  color: var(--text);
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1;
+  background: rgba(5, 7, 11, 0.62);
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
+  user-select: none;
+}
+
+.prev { left: 0.8rem; }
+.next { right: 0.8rem; }
+
+.prev:hover,
+.next:hover {
+  color: var(--bg);
+  background: var(--accent);
+}
+
+#mainBioContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#BioBlock {
+  width: min(100%, 68rem);
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+  padding: clamp(1.2rem, 4vw, 3rem);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 0.5rem);
+  background:
+    radial-gradient(circle at top right, rgba(240,169,77,0.14), transparent 24rem),
+    linear-gradient(135deg, rgba(255,255,255,0.09), rgba(255,255,255,0.035)),
+    var(--panel);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+#BioText {
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+#BioText h2,
+#BioText h4 {
+  margin: 2rem 0 0.6rem;
+  color: var(--text);
+  font-size: 1.05rem;
+  letter-spacing: -0.015em;
+}
+
+#BioText p {
+  margin: 0 0 1rem;
+}
+
+.bio-lead {
+  max-width: 54rem;
+  margin-top: 1.2rem !important;
+  color: #d6dde9;
+  font-size: clamp(1.05rem, 2vw, 1.28rem);
+  line-height: 1.55;
+}
+
+#photoBlock {
+  float: right;
+  width: clamp(7rem, 14vw, 10.5rem);
+  height: clamp(7rem, 14vw, 10.5rem);
+  margin: 0 0 1rem 1.4rem;
+  object-fit: cover;
+  border-radius: 1.4rem;
+  border: 1px solid var(--border-strong);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.32);
+}
+
+.bio-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 1.6rem 0 1.2rem;
+}
+
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin: 1rem 0 0.4rem;
+}
+
+.skill-grid p {
+  margin: 0;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: rgba(255,255,255,0.04);
+}
+
+.bio-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.8rem;
+}
+
+.bio-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.9rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  color: var(--text);
+  background: rgba(255,255,255,0.07);
+}
+
+.bio-actions a:first-child {
+  color: #101318;
+  background: var(--accent);
+  border-color: transparent;
+  font-weight: 800;
+}
+
+.bio-actions a:hover {
+  transform: translateY(-0.1rem);
+}
+
+.linkWithoutStyles {
+  text-decoration: none;
+  color: inherit;
+}
+
+#subTitle,
+#insideRightBlock,
+#photoBlockAbout,
+#logoBlock,
+#leftInterfaceSections,
+#close_navbar {
+  display: none;
+}
+
+@media screen and (max-width: 980px) {
+  body {
+    overflow: auto;
+  }
+
+  #navbar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  #mainPortfolioContent,
+  #mainBioContent {
+    position: relative;
+    left: 0;
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    padding: 1rem;
+    overflow: visible;
+  }
+
+  .portfolio-intro {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-meta,
+  .bio-stats,
+  .skill-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #BioBlock {
+    max-height: none;
+  }
+
+  #photoBlock {
+    float: none;
+    display: block;
+    margin: 0 0 1rem;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  #mainPortfolioContent {
+    grid-template-columns: 1fr;
+  }
+
+  div.gallery > p:first-child {
+    min-height: auto;
+  }
+
+  .slideshow-container {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+
+/* GitHub Pages-safe slider controls */
+button.prev,
+button.next {
+  border: 0;
+  font-family: inherit;
+  line-height: 1;
+  background: rgba(7, 9, 13, 0.46);
+}
+
+button.prev:hover,
+button.next:hover {
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.slide-counter {
+  position: absolute;
+  right: 0.8rem;
+  bottom: 0.8rem;
+  z-index: 5;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.45);
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.72rem;
+  pointer-events: none;
+}
+
+.image-missing-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 12rem;
+  margin-top: 1rem;
+  border: 1px dashed var(--border-strong);
+  border-radius: 1rem;
+  color: var(--muted);
+  background: rgba(255,255,255,0.035);
+  font-size: 0.85rem;
+}
+
+/* ==========================================================
+   Portfolio layout + filter fix v8
+   No duplicated page layers. No :target layout rules.
+   JavaScript controls routing with body classes only.
+   ========================================================== */
+
+.route-anchor {
+  position: fixed;
+  left: -9999px;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+body.showing-bio #mainBioContent {
+  display: flex !important;
+}
+
+body.showing-bio #mainPortfolioContent {
+  display: none !important;
+}
+
+body.showing-portfolio #mainBioContent {
+  display: none !important;
+}
+
+body.showing-portfolio #mainPortfolioContent {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-content: flex-start !important;
+  align-items: flex-start !important;
+  gap: 1.25rem !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding-bottom: 4rem !important;
+}
+
+#mainPortfolioContent .portfolio-intro {
+  flex: 0 0 100% !important;
+  width: 100% !important;
+  max-width: none !important;
+}
+
+body.showing-portfolio #mainPortfolioContent div.gallery {
+  display: flex !important;
+  flex: 1 1 21rem !important;
+  min-width: min(100%, 21rem) !important;
+  max-width: none !important;
+  align-self: flex-start !important;
+  flex-direction: column !important;
+  position: relative !important;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+}
+
+body.portfolio-filter-webgl #mainPortfolioContent .BlenderItem,
+body.portfolio-filter-graphics #mainPortfolioContent .FrontEndItem {
+  display: none !important;
+}
+
+#mainPortfolioContent div.gallery > p:first-child {
+  flex: 0 0 auto !important;
+  position: relative !important;
+  z-index: 1 !important;
+  min-height: 4.3rem !important;
+}
+
+#mainPortfolioContent .slideshow-container {
+  flex: 0 0 auto !important;
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  height: clamp(13rem, 18vw, 18.5rem) !important;
+  min-height: 13rem !important;
+  max-height: 18.5rem !important;
+  aspect-ratio: auto !important;
+  overflow: hidden !important;
+}
+
+#mainPortfolioContent .slideshow-container > div:not(.image-missing-note):not(.slide-counter) {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  display: none !important;
+}
+
+#mainPortfolioContent .slideshow-container > div:not(.image-missing-note):not(.slide-counter):first-of-type,
+#mainPortfolioContent .slideshow-container.is-ready > div.is-current-slide:not(.image-missing-note):not(.slide-counter) {
+  display: block !important;
+}
+
+#mainPortfolioContent .slideshow-container.is-ready > div:not(.image-missing-note):not(.slide-counter):not(.is-current-slide) {
+  display: none !important;
+}
+
+#mainPortfolioContent .slideshow-container img,
+#mainPortfolioContent .slideshow-container video,
+#mainPortfolioContent .slideshow-container iframe {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  object-fit: contain !important;
+  border: 0 !important;
+}
+
+#mainPortfolioContent div.desc {
+  flex: 0 0 auto !important;
+  position: relative !important;
+  display: block !important;
+  height: auto !important;
+  max-height: 10.5rem !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+#mainPortfolioContent div.gallery:hover div.desc,
+#mainPortfolioContent div.desc:focus-within {
+  max-height: 17rem !important;
+}
+
+#mainPortfolioContent .prev,
+#mainPortfolioContent .next,
+#mainPortfolioContent .slide-counter {
+  position: absolute !important;
+}
+
+#mainPortfolioContent .image-missing-note {
+  position: absolute !important;
+  inset: 1rem !important;
+  display: flex !important;
+  min-height: 0 !important;
+  height: auto !important;
+  margin: 0 !important;
+}
+
+.project-placeholder-slide {
+  background:
+    radial-gradient(circle at 50% 25%, rgba(255,255,255,0.08), transparent 45%),
+    linear-gradient(135deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015)),
+    #080b10;
+}
+
+.project-placeholder-content {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--text);
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.project-placeholder-content span {
+  display: block;
+  margin-top: 0.4rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 980px) {
+  body {
+    overflow: auto !important;
+  }
+
+  #mainPortfolioContent,
+  #mainBioContent {
+    position: relative !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 100vh !important;
+    padding: 1rem !important;
+    overflow: visible !important;
+  }
+
+  body.showing-portfolio #mainPortfolioContent div.gallery {
+    flex-basis: 100% !important;
+    min-width: 0 !important;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  #mainPortfolioContent .slideshow-container {
+    height: clamp(11.5rem, 62vw, 17rem) !important;
+    min-height: 11.5rem !important;
+  }
+
+  #mainPortfolioContent div.gallery > p:first-child {
+    min-height: auto !important;
+  }
+}
+
+
+/* ==========================================================
+   v9 final category filter override
+   Fixes WebGL / 3D category buttons after v8 no-duplicate fix.
+   These rules are intentionally at the very bottom so they win.
+   ========================================================== */
+body.showing-portfolio.portfolio-filter-all #mainPortfolioContent div.gallery,
+body.showing-portfolio.portfolio-filter-webgl #mainPortfolioContent div.gallery.FrontEndItem,
+body.showing-portfolio.portfolio-filter-graphics #mainPortfolioContent div.gallery.BlenderItem {
+  display: flex !important;
+}
+
+body.showing-portfolio.portfolio-filter-webgl #mainPortfolioContent div.gallery.BlenderItem,
+body.showing-portfolio.portfolio-filter-graphics #mainPortfolioContent div.gallery.FrontEndItem {
+  display: none !important;
+}
+
+
+/* Zack Andr profile update */
+#bioLink,
+#portfolioLink,
+#frontendLink,
+#grafics3dLink,
+#portfoliolink a {
+  display: inline-flex;
+  width: 100%;
+  cursor: pointer;
+  color: var(--muted) !important;
+  text-decoration: none !important;
+  padding: 0.7rem 0.85rem;
+  margin: 0.15rem 0;
+  border: 1px solid transparent;
+  border-radius: 0.85rem;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+#bioLink:hover,
+#portfolioLink:hover,
+#frontendLink:hover,
+#grafics3dLink:hover,
+#bioLink.is-active,
+#portfolioLink.is-active,
+#frontendLink.is-active,
+#grafics3dLink.is-active {
+  color: var(--text) !important;
+  border-color: var(--border-strong);
+  background: rgba(255, 255, 255, 0.075);
+}
+
+.systems-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin: 1rem 0 0.4rem;
+}
+
+.systems-grid p {
+  margin: 0;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: rgba(94, 228, 185, 0.045);
+}
+
+.systems-grid strong {
+  color: var(--text);
+}
+
+@media screen and (max-width: 980px) {
+  .systems-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-list {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.contact-list a {
+  display: inline-flex;
+  width: 100%;
+  padding: 0.62rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 0.8rem;
+  color: var(--muted) !important;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.contact-list a:hover {
+  color: var(--text) !important;
+  border-color: var(--border-strong);
+  background: rgba(255, 255, 255, 0.07);
+}
