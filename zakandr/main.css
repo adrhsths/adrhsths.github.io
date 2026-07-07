@@ -117,6 +117,10 @@ p {
 #portfolio,
 #frontend,
 #grafics3d,
+#bioLink,
+#portfolioLink,
+#frontendLink,
+#grafics3dLink,
 #portfoliolink a {
   display: inline-flex;
   width: 100%;
@@ -134,11 +138,19 @@ p {
 #portfolio:hover,
 #frontend:hover,
 #grafics3d:hover,
+#bioLink:hover,
+#portfolioLink:hover,
+#frontendLink:hover,
+#grafics3dLink:hover,
 #portfoliolink a:hover,
 #bio.is-active,
 #portfolio.is-active,
 #frontend.is-active,
-#grafics3d.is-active {
+#grafics3d.is-active,
+#bioLink.is-active,
+#portfolioLink.is-active,
+#frontendLink.is-active,
+#grafics3dLink.is-active {
   color: var(--text) !important;
   border-color: var(--border-strong);
   background: rgba(255, 255, 255, 0.075);
@@ -151,6 +163,41 @@ p {
   margin-right: 0.45rem;
   vertical-align: -0.25rem;
   opacity: 0.85;
+}
+
+.contact-list {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.contact-list a {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 2.55rem;
+  padding: 0.65rem 0.8rem;
+  color: var(--muted) !important;
+  text-decoration: none !important;
+  border: 1px solid transparent;
+  border-radius: 0.85rem;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.contact-list a::after {
+  content: "↗";
+  color: var(--muted-2);
+  font-size: 0.82rem;
+}
+
+.contact-list a[download]::after {
+  content: "↓";
+}
+
+.contact-list a:hover {
+  color: var(--text) !important;
+  border-color: var(--border-strong);
+  background: rgba(255, 255, 255, 0.075);
 }
 
 footer {
@@ -816,82 +863,4 @@ body.showing-portfolio.portfolio-filter-graphics #mainPortfolioContent div.galle
 body.showing-portfolio.portfolio-filter-webgl #mainPortfolioContent div.gallery.BlenderItem,
 body.showing-portfolio.portfolio-filter-graphics #mainPortfolioContent div.gallery.FrontEndItem {
   display: none !important;
-}
-
-
-/* Zack Andr profile update */
-#bioLink,
-#portfolioLink,
-#frontendLink,
-#grafics3dLink,
-#portfoliolink a {
-  display: inline-flex;
-  width: 100%;
-  cursor: pointer;
-  color: var(--muted) !important;
-  text-decoration: none !important;
-  padding: 0.7rem 0.85rem;
-  margin: 0.15rem 0;
-  border: 1px solid transparent;
-  border-radius: 0.85rem;
-  background: rgba(255, 255, 255, 0.03);
-}
-
-#bioLink:hover,
-#portfolioLink:hover,
-#frontendLink:hover,
-#grafics3dLink:hover,
-#bioLink.is-active,
-#portfolioLink.is-active,
-#frontendLink.is-active,
-#grafics3dLink.is-active {
-  color: var(--text) !important;
-  border-color: var(--border-strong);
-  background: rgba(255, 255, 255, 0.075);
-}
-
-.systems-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.8rem;
-  margin: 1rem 0 0.4rem;
-}
-
-.systems-grid p {
-  margin: 0;
-  padding: 1rem;
-  border: 1px solid var(--border);
-  border-radius: 1rem;
-  background: rgba(94, 228, 185, 0.045);
-}
-
-.systems-grid strong {
-  color: var(--text);
-}
-
-@media screen and (max-width: 980px) {
-  .systems-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.contact-list {
-  display: grid;
-  gap: 0.55rem;
-}
-
-.contact-list a {
-  display: inline-flex;
-  width: 100%;
-  padding: 0.62rem 0.8rem;
-  border: 1px solid var(--border);
-  border-radius: 0.8rem;
-  color: var(--muted) !important;
-  background: rgba(255, 255, 255, 0.025);
-}
-
-.contact-list a:hover {
-  color: var(--text) !important;
-  border-color: var(--border-strong);
-  background: rgba(255, 255, 255, 0.07);
 }
